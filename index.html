@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets\css\output.css" />
+    <link rel="stylesheet" href="assets\css\style.css" />
+    <title>Document</title>
+  </head>
+  <body class="font-poppings">
+    <!-- HEADER SECTION-->
+    <header>
+      <nav
+        class="fixed top-0 z-[100] w-full bg-white flex items-center justify-between p-5"
+      >
+        <div class="w-[50px] h-[50px] object-contain">
+          <img src="assets\images\deolaLogo.png" alt="" class="w-full h-auto" />
+        </div>
+        <div id="nav-toggle" class="lg:hidden cursor-pointer w-fit h-fit">
+          <img
+            id="open"
+            src="assets\icons\hamNav.png"
+            alt=""
+            class="w-full h-auto"
+          />
+          <img
+            id="close"
+            src="assets\icons\hamX.png"
+            alt=""
+            class="w-full h-auto hidden"
+          />
+        </div>
+
+        <!-- for mobile -->
+        <ul id="d-navigate" class="p-5 hide lg:hidden bg-white">
+          <li class="hover:text-blue-500 active:text-blue-700 cursor-pointer">
+            <a href="\">Home</a>
+          </li>
+          <li class="hover:text-blue-500 active:text-blue-700 cursor-pointer">
+            <a href="pages\about\about.html">About us</a>
+          </li>
+          <li class="hover:text-blue-500 active:text-blue-700 cursor-pointer">
+            <a href="pages\menu\menu.html">Menu</a>
+          </li>
+          <li class="hover:text-blue-500 active:text-blue-700 cursor-pointer">
+            <a href="pages\bookUs\bookus.html">Book Us</a>
+          </li>
+        </ul>
+
+        <!-- for desktop -->
+        <ul class="hidden lg:flex justify-around gap-2 w-[20em]">
+          <li class="hover:text-blue-500 active:text-blue-700 cursor-pointer">
+            Home
+          </li>
+          <li class="hover:text-blue-500 active:text-blue-700 cursor-pointer">
+            About Us
+          </li>
+          <li class="hover:text-blue-500 active:text-blue-700 cursor-pointer">
+            Menu
+          </li>
+          <li class="hover:text-blue-500 active:text-blue-700 cursor-pointer">
+            Book Us
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="w-full h-[400rem]">
+      <!-- HERO SECTION -->
+      <section id="hero" class="relative h-screen w-full overflow-hidden">
+        <!-- Hero Images -->
+        <div id="image-wrapper" class="absolute inset-0">
+          <!-- Images will be dynamically added by JavaScript -->
+        </div>
+
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+
+        <!-- Hero Text -->
+        <div
+          class="relative z-10 flex flex-col items-center justify-center h-full w-full text-center"
+        >
+          <h1 class="text-white text-[48px] font-logofont">
+            DEOLA RESOURCES
+          </h1>
+          <p class="text-white font-logofont md:text-xl mt-4">
+            The delight in food!
+          </p>
+          <button
+            class="text-white bg-deolaYellow rounded-2xl mt-10 text-2xl font-[500] hover:bg-inherit hover:border-[2px] hover:border-deolaYellow hover:text-deolaYellow w-[16rem] h-[5rem]"
+          >
+            Book Us Now!
+          </button>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section
+        id="services"
+        class="w-full flex flex-col justify-center items-center py-10 md:py-20 md:px-20 px-5"
+      >
+        <h2 class="text-2xl mb-[1rem]">Our Services</h2>
+        <div
+          class="carousel-container flex relative overflow-hidden rounded-md"
+        >
+          <!-- Carousel Wrapper -->
+          <div
+            id="carousel"
+            class="flex justify-between items-center w-full transition-transform duration-700"
+          >
+            <!-- Carousel Items -->
+            <div class="carousel-item relative w-full flex-shrink-0">
+              <img
+                src="assets\images\snack1.jpg"
+                alt="Image 1"
+                class="h-64 w-full object-cover"
+              />
+              <div
+                class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+              >
+                <p class="text-white text-xl font-semibold">
+                  Snacks
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item relative w-full flex-shrink-0">
+              <img
+                src="assets\images\catering1.jpg"
+                alt="Image 2"
+                class="h-64 w-full object-cover"
+              />
+              <div
+                class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+              >
+                <p class="text-white text-xl font-semibold">
+                  Catering Services
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item relative w-full flex-shrink-0">
+              <img
+                src="assets\images\surprise1.jpg"
+                alt="Image 3"
+                class="h-64 w-full object-cover"
+              />
+              <div
+                class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+              >
+                <p class="text-white text-xl font-semibold">
+                  Surprises & Food trays
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item relative w-full flex-shrink-0">
+              <img
+                src="assets\images\event1.jpg"
+                alt="Image 4"
+                class="h-64 w-full object-cover"
+              />
+              <div
+                class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+              >
+                <p class="text-white text-xl font-semibold">
+                  Event Management
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item relative w-full flex-shrink-0">
+              <img
+                src="assets\images\soupbowl1.jpg"
+                alt="Image 5"
+                class="h-64 w-full object-cover"
+              />
+              <div
+                class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+              >
+                <p class="text-white text-xl font-semibold">
+                  Soup Bowls
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item relative w-full flex-shrink-0">
+              <img
+                src="assets\images\c&t1.jpg"
+                alt="Image 5"
+                class="h-64 w-full object-cover"
+              />
+              <div
+                class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+              >
+                <p class="text-white text-xl font-semibold">
+                  Consulting & Training
+                </p>
+              </div>
+            </div>
+            <div class="carousel-item relative w-full flex-shrink-0">
+              <img
+                src="assets\images\mealplan1.jpg"
+                alt="Image 5"
+                class="h-64 w-full object-cover"
+              />
+              <div
+                class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+              >
+                <p class="text-white text-xl font-semibold">
+                  Meal Plans
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Dots -->
+          <div
+            class="dots-container absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"
+          >
+            <button
+              class="dot lg:w-3 lg:h-3 w-2 h-2 rounded bg-gray-400"
+            ></button>
+            <button
+              class="dot lg:w-3 lg:h-3 w-2 h-2 rounded bg-gray-400"
+            ></button>
+            <button
+              class="dot lg:w-3 lg:h-3 w-2 h-2 rounded bg-gray-400"
+            ></button>
+            <button
+              class="dot lg:w-3 lg:h-3 w-2 h-2 rounded bg-gray-400"
+            ></button>
+            <button
+              class="dot lg:w-3 lg:h-3 w-2 h-2 rounded bg-gray-400"
+            ></button>
+            <button
+              class="dot lg:w-3 lg:h-3 w-2 h-2 rounded bg-gray-400"
+            ></button>
+            <button
+              class="dot lg:w-3 lg:h-3 w-2 h-2 rounded bg-gray-400"
+            ></button>
+          </div>
+
+          <!-- Controls -->
+          <button
+            id="prev"
+            class="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white text-xl lg:text-3xl bg-black bg-opacity-30 rounded-full p-2"
+          >
+            &#10094;
+          </button>
+          <button
+            id="next"
+            class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white text-xl lg:text-3xl bg-black bg-opacity-30 rounded-full p-2"
+          >
+            &#10095;
+          </button>
+        </div>
+      </section>
+
+      <!-- AMENITIES SECTION -->
+      <section
+        class="w-full flex flex-col justify-center items-center py-10 md:py-20 md:px-20 px-5 relative overflow-hidden"
+      >
+        <img
+          src="assets\images\foodbg1.jpg"
+          alt="Image 5"
+          class="h-full w-full object-cover absolute z-[-1]"
+        />
+        <div
+          class="overlay absolute inset-0 h-full bg-white flex items-center justify-center bg-image"
+        ></div>
+        <h2 class="text-2xl mb-[1rem] relative">Amenities</h2>
+        <ul
+          class="flex flex-col sm:flex-row justify-center items-center gap-5 relative"
+        >
+          <li class="flex flex-col justify-center items-center">
+            <img
+              src="assets\images\icons8-delivery-50.png"
+              alt="delivery"
+            />Home Delivery
+          </li>
+          <li class="flex flex-col justify-center items-center">
+            <img
+              src="assets\images\icons8-take-away-50.png"
+              alt="takeaway"
+            />Take Away
+          </li>
+          <li class="flex flex-col justify-center items-center">
+            <img src="assets\images\icons8-take-away-50.png" alt="party" />Party
+            Orders
+          </li>
+          <li class="flex flex-col justify-center items-center">
+            <img
+              src="assets\images\icons8-valentine-50.png"
+              alt="heart"
+            />Valentine Specials
+          </li>
+        </ul>
+      </section>
+
+      <!-- ABOUT US SECTION -->
+      <section
+        class="w-full flex flex-col md:flex-row gap-[2rem] justify-center items-center py-10 md:py-20 md:px-20 px-5 relative"
+      >
+        <div
+          class="overlay absolute inset-0 h-full bg-deolaBg flex items-center justify-center"
+        ></div>
+        <div class="flex flex-col justify-center items-center relative">
+          <h2
+            class="text-2xl mb-[1rem] relative border-b-[2px] border-deolaBlack"
+          >
+            About Us
+          </h2>
+          <p class="text-center text-[14px] mb-[1rem] max-w-[400px]">
+            Deola Resources is a food company with a diverse range of products
+            and services, including snacks, catering services, easy foods,
+            natural foods, agriculture, food processing, food production, food
+            manufacturing, manufacturing beverages and general contracts..
+          </p>
+          <a href="" class="underline cursor-pointer flex mb-10">Read more </a>
+        </div>
+        <div
+          class="flex justify-center items-center h-fit w-full max-w-[400px] relative overflow-hidden rounded-md shadow-[inset_0_0_20px_rgba(0,0,0,0.9)]"
+        >
+          <div
+            class="absolute inset-0 w-full h-full bg-deolaBg flex items-center justify-center bg-image2"
+          ></div>
+          <video
+            src="assets\media\mygif1.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+            class="w-full h-auto object-cover"
+          ></video>
+        </div>
+      </section>
+    </main>
+    <script src="assets\js\scripts.js"></script>
+  </body>
+</html>

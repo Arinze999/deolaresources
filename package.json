@@ -1,0 +1,14 @@
+{
+  "name": "deolaresources",
+  "version": "1.0.0",
+  "description": "website for deola resources",
+  "main": "index.html",
+  "scripts": {
+    "dev": "tailwindcss -i assets/css/input.css -o assets/css/output.css --watch"
+  },
+  "author": "SKYPATH TECH.",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.16"
+  }
+}
