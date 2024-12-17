@@ -16,6 +16,9 @@ module.exports = {
         logofont: ["Rammetto One", "sans-serif"],
         poppings: ["Poppins", "sans-serif"],
       },
+      boxShadow: {
+        custom: "-5px 5px 12px -3px rgba(0,0,0,0.8)",
+      },
     },
   },
   plugins: [],

@@ -62,9 +62,38 @@
 /*  */
 
 .bg-image {
-  opacity: 0.90;
+  opacity: 0.9;
 }
 
 .bg-image2 {
-    opacity: 0.35;
+  opacity: 0.35;
 }
+
+/* faqs */
+.parent {
+  transition: height 0.2s ease-in-out;
+  border-bottom: 1px dotted black;
+  height: 2rem;
+}
+
+.expand {
+  height: 6rem; /* Adjusts height to fit content */
+}
+
+.answer {
+  transition: all 0.3s ease-in-out;
+  top: -400%;
+  opacity: 0;
+}
+
+.answer.show-answer {
+  top: 30%;
+  opacity: 1;
+}
+
+.rotate-chevron {
+  transform: rotateX(180deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+/*  */

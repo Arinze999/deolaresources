@@ -114,3 +114,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial render
   updateCarousel();
 });
+
+// faqs
+document.querySelectorAll(".question").forEach((question) => {
+  question.addEventListener("click", function () {
+    const parent = this.parentElement;
+    const answer = this.nextElementSibling;
+    const chevron = this.querySelector("span img");
+
+    parent.classList.toggle("expand");
+    answer.classList.toggle("show-answer");
+    chevron.classList.toggle("rotate-chevron");
+  });
+});
