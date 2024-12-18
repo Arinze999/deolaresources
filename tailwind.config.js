@@ -9,6 +9,8 @@ module.exports = {
         deolaBlack: "#000000",
         deolaYellow: "#FFD700",
         deolaYellowTrans: "#FFD7001A",
+        deolaDarkGreen: "#207176",
+        deolaDarkGreen2: "#0F3A39",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
