@@ -68,7 +68,10 @@
     <!-- MAIN -->
     <main class="w-full">
       <!-- HERO SECTION -->
-      <section id="hero" class="relative h-screen w-full overflow-hidden">
+      <section
+        id="hero"
+        class="relative h-[calc(100vh-5rem)] w-full overflow-hidden"
+      >
         <!-- Hero Images -->
         <div id="image-wrapper" class="absolute inset-0">
           <!-- Images will be dynamically added by JavaScript -->
@@ -93,9 +96,9 @@
             Book Us Now!
           </button>
           <small class="text-gray-300 text-[12px] w-full max-w-[350px]"
-            >Deola Resources believes that food is more than just
+            >"Deola Resources believes that food is more than just
             sustenance-it's an expression of love and creativity that should be
-            shared and enjoyed by all Delightedly.. welcome to Deola Resources
+            shared and enjoyed by all Delightedly.. welcome to Deola Resources"
             <br />
             ☺️🤗</small
           >
@@ -119,7 +122,7 @@
             <!-- Carousel Items -->
             <div class="carousel-item relative w-full flex-shrink-0">
               <img
-                src="assets\images\snack1.jpg"
+                src="assets\images\snacks.jpg"
                 alt="Image 1"
                 class="h-64 w-full object-cover"
               />
@@ -640,39 +643,45 @@
 
     <!-- FOOTER -->
     <footer
-      class="bg-deolaDarkGreen2 text-white w-full h-fit flex flex-col items-center gap-5 pt-5"
+      class="bg-deolaDarkGreen2 text-white w-full h-fit flex flex-col items-center gap-5 py-5"
     >
       <ul
         class="h-fit w-full max-w-[60rem] p-2 py-10 flex flex-col md:flex-row md:items-center justify-between gap-2 border-b-[1px] border-gray-500"
       >
         <li class="flex-1 flex justify-start items-center gap-2">
-          <div class="w-[50px] h-[50px]">
-            <img src="assets\icons\location.png" alt="location.png" />
+          <div class="w-[30px] h-[30px]">
+            <img
+              src="assets\icons\location.png"
+              alt="location.png"
+              class="w-full h-auto object-cover"
+            />
           </div>
           <div>
             <p>Find Us</p>
-            <small class="text-deolaYellow text-[12px]"
+            <small class="text-gray-400 text-[12px]"
               >Umuonyeali Timber market, Owerri, Imo</small
             >
           </div>
         </li>
         <li class="flex-1 flex justify-start items-center gap-2">
-          <div class="w-[50px] h-[50px]">
+          <div class="w-[30px] h-[30px]">
             <img src="assets\icons\whatsapp.png" alt="location.png" />
           </div>
           <div>
             <p>Call/Whattsap</p>
-            <small class="text-deolaYellow text-[12px]">+2348132124871</small>
+            <small class="text-gray-400 text-[12px]">+2348132124871</small>
           </div>
         </li>
         <li class="flex-1 flex justify-start items-center gap-2">
-          <div class="w-[50px] h-[50px]">
+          <div class="w-[30px] h-[30px]">
             <img src="assets\icons\mail.png" alt="location.png" />
           </div>
           <div>
             <p>Mail</p>
-            <small class="text-deolaYellow text-[12px]"
-              >deolaresources@gmail.com</small
+            <a target="_blank" href="mailto:deolaresources@gmail.com"
+              ><small class="text-gray-400 text-[12px]"
+                >deolaresources@gmail.com</small
+              ></a
             >
           </div>
         </li>
@@ -697,7 +706,9 @@
           <p class="font-semibold">Follow Us</p>
           <ul class="flex gap-2 items-center">
             <li>
-              <a href=""
+              <a
+                target="_blank"
+                href="https://www.facebook.com/profile.php?id=100063540555025&mibextid=ZbWKwL"
                 ><img src="assets\images\facebook.png" alt="fb.png"
               /></a>
             </li>
@@ -724,8 +735,32 @@
           <a class="underline text-sm" href="#about">About Us</a><br />
           <a class="underline text-sm" href="#services">Services</a>
         </div>
-        <div class="flex-1"></div>
+        <div class="flex-1">
+          <p class="font-semibold relative w-fit mb-5">
+            Join the community
+            <span
+              class="absolute bg-deolaYellow left-0 bottom-[-10px] w-[50%] h-[3px]"
+            ></span>
+          </p>
+          <div
+            class="w-full h-[2.5rem] relative border-[2px] overflow-hidden rounded-md"
+          >
+            <input
+              type="text"
+              class="w-full h-full text-black text-[12px] p-2 border-none outline-none"
+              placeholder="Enter email address"
+            />
+            <button
+              class="w-[4rem] h-full absolute right-0 bottom-0 bg-deolaYellow rounded-md flex items-center justify-center"
+            >
+              <img src="assets\icons\send.png" alt="" />
+            </button>
+          </div>
+        </div>
       </div>
+      <p class="w-full max-w-[60rem] text-[12px] text-center py-2">
+        Copyright &copy; deolaresources 2024. All Right Reserved
+      </p>
     </footer>
     <script src="assets\js\scripts.js"></script>
   </body>
