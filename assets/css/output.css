@@ -688,6 +688,10 @@ video {
   height: 20px;
 }
 
+.h-\[2px\]{
+  height: 2px;
+}
+
 .h-\[2rem\]{
   height: 2rem;
 }
@@ -790,6 +794,10 @@ video {
   width: 100%;
 }
 
+.max-w-\[1100px\]{
+  max-width: 1100px;
+}
+
 .max-w-\[1400px\]{
   max-width: 1400px;
 }
@@ -826,6 +834,10 @@ video {
   flex-shrink: 0;
 }
 
+.grow{
+  flex-grow: 1;
+}
+
 .-translate-x-1\/2{
   --tw-translate-x: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -850,6 +862,10 @@ video {
 
 .flex-col{
   flex-direction: column;
+}
+
+.flex-col-reverse{
+  flex-direction: column-reverse;
 }
 
 .flex-wrap{
@@ -942,11 +958,6 @@ video {
   border-style: none;
 }
 
-.border-blue-600{
-  --tw-border-opacity: 1;
-  border-color: rgb(37 99 235 / var(--tw-border-opacity, 1));
-}
-
 .border-deolaBlack{
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
@@ -955,11 +966,6 @@ video {
 .border-gray-500{
   --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity, 1));
-}
-
-.border-red-600{
-  --tw-border-opacity: 1;
-  border-color: rgb(220 38 38 / var(--tw-border-opacity, 1));
 }
 
 .bg-black{
@@ -1056,6 +1062,10 @@ video {
   padding-bottom: 1.25rem;
 }
 
+.pt-5{
+  padding-top: 1.25rem;
+}
+
 .text-center{
   text-align: center;
 }
@@ -1143,6 +1153,12 @@ video {
 .shadow-\[inset_0_0_20px_rgba\(0\2c 0\2c 0\2c 0\.9\)\]{
   --tw-shadow: inset 0 0 20px rgba(0,0,0,0.9);
   --tw-shadow-colored: inset 0 0 20px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-xl{
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -1241,6 +1257,10 @@ video {
 
   .md\:gap-0{
     gap: 0px;
+  }
+
+  .md\:overflow-hidden{
+    overflow: hidden;
   }
 
   .md\:px-20{

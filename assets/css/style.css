@@ -77,11 +77,19 @@
 .parent {
   transition: height 0.2s ease-in-out;
   border-bottom: 1px dotted black;
-  height: 2rem;
+  height: 3rem;
+}
+
+.parent:nth-of-type(2).expand {
+  height: 9rem;
+}
+
+.parent:nth-of-type(3).expand {
+  height: 7rem;
 }
 
 .expand {
-  height: 6rem; /* Adjusts height to fit content */
+  height: 8rem;
 }
 
 .answer {
@@ -91,7 +99,7 @@
 }
 
 .answer.show-answer {
-  top: 30%;
+  top: 40%;
   opacity: 1;
 }
 
