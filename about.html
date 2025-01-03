@@ -13,7 +13,9 @@
       class="sticky top-0 z-[100] w-full bg-white flex items-center justify-between p-5"
     >
       <div class="w-[50px] h-[50px] object-contain">
-        <img src="assets\images\deolaLogo.png" alt="" class="w-full h-auto" />
+        <a href="\"
+          ><img src="assets\images\deolaLogo.png" alt="" class="w-full h-auto"
+        /></a>
       </div>
       <div id="nav-toggle" class="lg:hidden cursor-pointer w-fit h-fit">
         <img
@@ -50,12 +52,17 @@
         <li
           class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
         >
-          <a href="\bookus.html">Book Us</a>
+          <a href="\blog.html">Blog</a>
         </li>
+        <button
+          class="bg-deolaDarkGreen text-white p-2 rounded-md hover:bg-deolaDarkGreen2 hover:text-white user-btn"
+        >
+          <a href="\admin-signin.html">Admin-SignIn</a>
+        </button>
       </ul>
 
       <!-- for desktop -->
-      <ul class="hidden lg:flex justify-around gap-2 w-[20em]">
+      <ul class="hidden lg:flex justify-around items-center gap-2 w-[30rem]">
         <li
           class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
         >
@@ -72,10 +79,15 @@
           <a href="\menu.html">Menu</a>
         </li>
         <li
-          class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
+        class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
+      >
+        <a href="\blog.html">Blog</a>
+      </li>
+        <button
+          class="bg-deolaDarkGreen text-white p-2 rounded-md hover:bg-deolaDarkGreen2 hover:text-white user-btn"
         >
-          <a href="\bookus.html">Book Us</a>
-        </li>
+          <a href="\admin-signin.html">Admin-SignIn</a>
+        </button>
       </ul>
     </nav>
     <!-- </header> -->
@@ -288,7 +300,9 @@
               /></a>
             </li>
             <li>
-              <a href=""
+              <a
+                target="_blank"
+                href="https://www.instagram.com/deolaresources/profilecard/?igsh=MWk2cm8xMXptbXlncQ=="
                 ><img src="assets\images\instagram.png" alt="insta.png"
               /></a>
             </li>
@@ -337,6 +351,6 @@
         Copyright &copy; deolaresources 2024. All Right Reserved
       </p>
     </footer>
-    <script src="assets\js\scripts.js"></script>
+    <script type="module" src="assets\js\scripts.js"></script>
   </body>
 </html>

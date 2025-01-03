@@ -1,8 +1,75 @@
+import Swal from "https://cdn.skypack.dev/sweetalert2@11";
+import {
+  getAuth,
+  signOut,
+} from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBHZ3FJUgWG3ZF7jvUOqXH0q_yIRBocfaI",
+  authDomain: "deolaresources-f2a14.firebaseapp.com",
+  projectId: "deolaresources-f2a14",
+  storageBucket: "deolaresources-f2a14.firebasestorage.app",
+  messagingSenderId: "396593158918",
+  appId: "1:396593158918:web:072aac4acc6cb35b1edc87",
+};
+
+// Firebase configuration
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
 // navbar details
 const navBar = document.getElementById("d-navigate");
 const navBtn = document.getElementById("nav-toggle");
 const openNav = document.getElementById("open");
 const closeNav = document.getElementById("close");
+const user = localStorage.getItem("deolaToken");
+const userbtn = document.getElementsByClassName("user-btn");
+
+console.log(user);
+
+if (user) {
+  for (let i = 0; i < userbtn.length; i++) {
+    const button = document.createElement("button");
+    button.innerHTML = "Admin-Logout";
+    userbtn[i].innerHTML = ""; // Clear existing content if necessary
+    userbtn[i].appendChild(button);
+
+    button.addEventListener("click", () => {
+      signOut(auth)
+        .then(() => {
+          // Clear localStorage
+          localStorage.removeItem("deolaToken");
+
+          // Show SweetAlert popup
+          Swal.fire({
+            title: "Success!",
+            text: "Logged out successfully.",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+
+          // Delay the page reload
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        })
+        .catch((error) => {
+          console.error("Error logging out:", error);
+
+          // Show error popup
+          Swal.fire({
+            title: "Error!",
+            text: "An error occurred during logout. Please try again.",
+            icon: "error",
+            confirmButtonText: "OK",
+          });
+        });
+    });
+  }
+}
 
 //navbar responsive function
 navBtn.addEventListener("click", () => {

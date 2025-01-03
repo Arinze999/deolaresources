@@ -14,7 +14,9 @@
       class="sticky top-0 z-[100] w-full bg-white flex items-center justify-between p-5"
     >
       <div class="w-[50px] h-[50px] object-contain">
-        <img src="assets\images\deolaLogo.png" alt="" class="w-full h-auto" />
+        <a href="\"
+        ><img src="assets\images\deolaLogo.png" alt="" class="w-full h-auto"
+      /></a>
       </div>
       <div id="nav-toggle" class="lg:hidden cursor-pointer w-fit h-fit">
         <img
@@ -49,14 +51,19 @@
           <a href="\menu.html">Menu</a>
         </li>
         <li
-          class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
-        >
-          <a href="\bookus.html">Book Us</a>
-        </li>
+        class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
+      >
+        <a href="\blog.html">Blog</a>
+      </li>
+        <button
+        class="bg-deolaDarkGreen text-white p-2 rounded-md hover:bg-deolaDarkGreen2 hover:text-white user-btn"
+      >
+        <a href="\admin-signin.html">Admin-SignIn</a>
+      </button>
       </ul>
 
       <!-- for desktop -->
-      <ul class="hidden lg:flex justify-around gap-2 w-[20em]">
+      <ul class="hidden lg:flex justify-around items-center gap-2 w-[30rem]">
         <li
           class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
         >
@@ -73,10 +80,15 @@
           <a href="\menu.html">Menu</a>
         </li>
         <li
-          class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
-        >
-          <a href="\bookus.html">Book Us</a>
-        </li>
+        class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
+      >
+        <a href="\blog.html">Blog</a>
+      </li>
+        <button
+        class="bg-deolaDarkGreen text-white p-2 rounded-md hover:bg-deolaDarkGreen2 hover:text-white user-btn"
+      >
+        <a href="\admin-signin.html">Admin-SignIn</a>
+      </button>
       </ul>
     </nav>
     <!-- </header> -->
@@ -100,14 +112,14 @@
         <div
           class="relative z-10 flex flex-col items-center justify-center h-full w-full text-center"
         >
-          <h1 class="text-white text-[48px] font-logofont">
+          <h1 class="text-white text-[28px] md:text-[48px] font-logofont">
             DEOLA RESOURCES
           </h1>
           <p class="text-white font-logofont md:text-xl mt-4">
             The delight in food!
           </p>
           <button
-            class="text-white bg-deolaYellow rounded-[50px] mt-10 mb-10 text-2xl font-[500] hover:bg-inherit hover:border-[2px] hover:border-deolaYellow hover:text-deolaYellow w-[16rem] h-[5rem]"
+            class="text-white bg-deolaDarkGreen rounded-[50px] mt-10 mb-10 md:text-2xl font-[500] hover:bg-inherit hover:border-[2px] hover:border-deolaDarkGreen2 hover:text-white md:w-[16rem] w-[10rem] md:h-[5rem] h-[3rem]"
           >
             Book Us Now!
           </button>
@@ -346,19 +358,15 @@
           </a>
         </div>
         <div
-          class="flex justify-center items-center h-fit w-full max-w-[400px] relative overflow-hidden rounded-md shadow-[inset_0_0_20px_rgba(0,0,0,0.9)]"
+          class="flex justify-center items-center h-[25rem] w-full max-w-[400px] relative overflow-hidden rounded-md shadow-[inset_0_0_20px_rgba(0,0,0,0.9)]"
         >
           <div
             class="absolute inset-0 w-full h-full bg-deolaBg flex items-center justify-center bg-image2"
           ></div>
-          <video
-            src="assets\media\mygif1.mp4"
-            autoplay
-            loop
-            muted
-            playsinline
-            class="w-full h-auto object-cover"
-          ></video>
+          <img
+            src="assets\images\deolaSpinChicken.jpg"
+            class="w-full h-full object-cover"
+          ></img>
         </div>
       </section>
 
@@ -714,7 +722,7 @@
               /></a>
             </li>
             <li>
-              <a href=""
+              <a target="_blank" href="https://www.instagram.com/deolaresources/profilecard/?igsh=MWk2cm8xMXptbXlncQ=="
                 ><img src="assets\images\instagram.png" alt="insta.png"
               /></a>
             </li>
@@ -763,6 +771,6 @@
         Copyright &copy; deolaresources 2024. All Right Reserved
       </p>
     </footer>
-    <script src="assets\js\scripts.js"></script>
+    <script type="module" src="assets\js\scripts.js"></script>
   </body>
 </html>
