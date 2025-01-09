@@ -28,7 +28,8 @@ const closeNav = document.getElementById("close");
 const user = localStorage.getItem("deolaToken");
 const userbtn = document.getElementsByClassName("user-btn");
 
-console.log(user);
+// Select all buttons with the class "whatsapp-button"
+const whatsappButtons = document.querySelectorAll(".whatsapp-button");
 
 if (user) {
   for (let i = 0; i < userbtn.length; i++) {
@@ -89,6 +90,8 @@ const images = [
   "assets/images/heroImg3.jpg",
   "assets/images/heroImg4.jpg",
   "assets/images/heroImg5.jpg",
+  "assets/images/heroImg6.jpg",
+  "assets/images/heroImg7.jpg",
 ];
 
 const imageWrapper = document.getElementById("image-wrapper");
@@ -192,5 +195,19 @@ document.querySelectorAll(".question").forEach((question) => {
     parent.classList.toggle("expand");
     answer.classList.toggle("show-answer");
     chevron.classList.toggle("rotate-chevron");
+  });
+});
+
+// Add click event listener to each button
+whatsappButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const phone = button.getAttribute("data-phone"); // Get the phone number
+    const message = encodeURIComponent(button.getAttribute("data-message")); // Get and encode the message
+
+    // Construct WhatsApp URL
+    const whatsappURL = `https://wa.me/${phone}?text=${message}`;
+
+    // Open the URL in a new tab
+    window.open(whatsappURL, "_blank");
   });
 });

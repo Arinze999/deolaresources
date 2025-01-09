@@ -735,6 +735,10 @@ video {
   height: 10rem;
 }
 
+.h-\[13rem\]{
+  height: 13rem;
+}
+
 .h-\[15rem\]{
   height: 15rem;
 }
@@ -820,16 +824,16 @@ video {
   width: 10rem;
 }
 
-.w-\[20em\]{
-  width: 20em;
-}
-
 .w-\[20px\]{
   width: 20px;
 }
 
 .w-\[30px\]{
   width: 30px;
+}
+
+.w-\[30rem\]{
+  width: 30rem;
 }
 
 .w-\[4rem\]{
@@ -844,12 +848,12 @@ video {
   width: 50px;
 }
 
-.w-\[50rem\]{
-  width: 50rem;
-}
-
 .w-\[90\%\]{
   width: 90%;
+}
+
+.w-\[95\%\]{
+  width: 95%;
 }
 
 .w-fit{
@@ -859,14 +863,6 @@ video {
 
 .w-full{
   width: 100%;
-}
-
-.w-\[30rem\]{
-  width: 30rem;
-}
-
-.w-\[30em\]{
-  width: 30em;
 }
 
 .max-w-\[1100px\]{
@@ -899,6 +895,10 @@ video {
 
 .max-w-\[60rem\]{
   max-width: 60rem;
+}
+
+.max-w-\[700px\]{
+  max-width: 700px;
 }
 
 .flex-1{
@@ -949,6 +949,10 @@ video {
 
 .items-start{
   align-items: flex-start;
+}
+
+.items-end{
+  align-items: flex-end;
 }
 
 .items-center{
@@ -1346,6 +1350,10 @@ video {
 }
 
 @media (min-width: 768px){
+  .md\:h-\[15rem\]{
+    height: 15rem;
+  }
+
   .md\:h-\[35rem\]{
     height: 35rem;
   }

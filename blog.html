@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets\css\output.css" />
     <link rel="stylesheet" href="assets\css\style.css" />
+    <link rel="stylesheet" href="assets/css/blog.css" />
     <title>Document</title>
   </head>
   <body class="font-poppings">
@@ -91,7 +92,64 @@
       </ul>
     </nav>
     <!-- </header> -->
-    blog
+    <main class="flex flex-col justify-center items-center gap-5 mb-10">
+      <h2 class="text-2xl relative">Welcome to Our blog</h2>
+      <small>Stay Up-to-Date about Our Activities</small>
+
+      <!-- blog card section -->
+      <section
+        class="w-[95%] max-w-[700px] rounded-md flex flex-col gap-[2rem] justify-center items-center py-10 md:py-20 md:px-20 relative bg-deolaBg"
+      >
+        <!-- blo segments -->
+        <div class="border-b-[2px] h-fit w-full p-2">
+          <div
+            class="h-[13rem] md:h-[15rem] w-full overflow-hidden mb-5"
+          >
+            <img
+              src="https://i0.wp.com/thebftonline.com/wp-content/uploads/2022/08/onga.jpg?fit=1080%2C720&ssl=1"
+              alt="post.jpg"
+              class="object-cover w-full h-full"
+            />
+          </div>
+          <p class="text-[14px] mb-5">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
+            adipisci recusandae impedit, velit tempora enim doloremque! Maxime,
+            vitae iusto. Necessitatibus pariatur inventore quae commodi deserunt
+            tenetur laudantium maiores consectetur. Laudantium.
+          </p>
+          <div class="flex items-end">
+            <img src="assets\icons\like.png" alt="" /><span class="text-[12px]"
+              >200</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- post form -->
+      <div id="post-form-modal" class="modal hidden">
+        <div id="modal-content" class="modal-content">
+          <button id="close-modal" class="close-button">✕</button>
+          <h2 class="font-semibold">Create a Post</h2>
+          <form id="post-form">
+            <div class="form-group">
+              <input type="file" id="postImg" />
+              <div id="image-preview" class="image-preview">
+                <p>No image selected</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="postText">Text</label>
+              <textarea id="postText" rows="4"></textarea>
+            </div>
+            <button type="submit" class="submit-button">Submit</button>
+          </form>
+        </div>
+      </div>
+      <!--  -->
+
+      <button id="view-form" class="view-form-button">Create a Post</button>
+    </main>
     <script type="module" src="assets\js\scripts.js"></script>
+    <script type="module" src="assets\js\blog.js"></script>
   </body>
 </html>
