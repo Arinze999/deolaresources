@@ -1,66 +1,72 @@
-import Swal from "https://cdn.skypack.dev/sweetalert2@11";
+// ----------------------------------------
+// Import Firebase and Dependencies
+// ----------------------------------------
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import {
   getAuth,
   signOut,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+import Swal from "https://cdn.skypack.dev/sweetalert2@11";
 
-// Your web app's Firebase configuration
+// ----------------------------------------
+// Firebase Initialization
+// ----------------------------------------
 const firebaseConfig = {
-  apiKey: "AIzaSyBHZ3FJUgWG3ZF7jvUOqXH0q_yIRBocfaI",
-  authDomain: "deolaresources-f2a14.firebaseapp.com",
-  projectId: "deolaresources-f2a14",
-  storageBucket: "deolaresources-f2a14.firebasestorage.app",
-  messagingSenderId: "396593158918",
-  appId: "1:396593158918:web:072aac4acc6cb35b1edc87",
+  apiKey: "AIzaSyAWGP7BrK07_erEaXgSVU3ZhlwBp3Qy3Bc",
+  authDomain: "shadeproject-e6cdd.firebaseapp.com",
+  projectId: "shadeproject-e6cdd",
+  storageBucket: "shadeproject-e6cdd.firebasestorage.app",
+  messagingSenderId: "170836665346",
+  appId: "1:170836665346:web:7ec2c062f4c158f0a1f31b",
 };
 
-// Firebase configuration
-const app = initializeApp(firebaseConfig);
-
+// Initialize Firebase with a custom app name
+const app = initializeApp(firebaseConfig, "scriptApp");
 const auth = getAuth(app);
 
-// navbar details
+// ----------------------------------------
+// Navbar Logic
+// ----------------------------------------
 const navBar = document.getElementById("d-navigate");
 const navBtn = document.getElementById("nav-toggle");
 const openNav = document.getElementById("open");
 const closeNav = document.getElementById("close");
+
+navBtn.addEventListener("click", () => {
+  navBtn.classList.toggle("rotate-nav");
+  navBar.classList.toggle("show-nav");
+  navBar.classList.toggle("hide");
+  openNav.classList.toggle("hidden");
+  closeNav.classList.toggle("hidden");
+});
+
+// ----------------------------------------
+// User Authentication and Logout
+// ----------------------------------------
 const user = localStorage.getItem("deolaToken");
 const userbtn = document.getElementsByClassName("user-btn");
 
-// Select all buttons with the class "whatsapp-button"
-const whatsappButtons = document.querySelectorAll(".whatsapp-button");
-
 if (user) {
-  for (let i = 0; i < userbtn.length; i++) {
-    const button = document.createElement("button");
-    button.innerHTML = "Admin-Logout";
-    userbtn[i].innerHTML = ""; // Clear existing content if necessary
-    userbtn[i].appendChild(button);
+  Array.from(userbtn).forEach((btn) => {
+    const logoutButton = document.createElement("button");
+    logoutButton.textContent = "Admin-Logout";
+    btn.innerHTML = ""; // Clear existing content
+    btn.appendChild(logoutButton);
 
-    button.addEventListener("click", () => {
+    logoutButton.addEventListener("click", () => {
       signOut(auth)
         .then(() => {
-          // Clear localStorage
           localStorage.removeItem("deolaToken");
-
-          // Show SweetAlert popup
           Swal.fire({
             title: "Success!",
             text: "Logged out successfully.",
             icon: "success",
             confirmButtonText: "OK",
           });
-
-          // Delay the page reload
-          setTimeout(() => {
-            window.location.reload();
-          }, 2000);
+          setTimeout(() => window.location.reload(), 2000);
         })
         .catch((error) => {
           console.error("Error logging out:", error);
-
-          // Show error popup
           Swal.fire({
             title: "Error!",
             text: "An error occurred during logout. Please try again.",
@@ -69,21 +75,12 @@ if (user) {
           });
         });
     });
-  }
+  });
 }
 
-//navbar responsive function
-navBtn.addEventListener("click", () => {
-  console.log("clicked");
-  console.log(navBar);
-  navBtn.classList.toggle("rotate-nav");
-  navBar.classList.toggle("show-nav");
-  navBar.classList.toggle("hide");
-  openNav.classList.toggle("hidden");
-  closeNav.classList.toggle("hidden");
-});
-
-// hero logic
+// ----------------------------------------
+// Hero Section Logic
+// ----------------------------------------
 const images = [
   "assets/images/heroImg1.jpg",
   "assets/images/heroImg2.jpg",
@@ -93,7 +90,6 @@ const images = [
   "assets/images/heroImg6.jpg",
   "assets/images/heroImg7.jpg",
 ];
-
 const imageWrapper = document.getElementById("image-wrapper");
 let currentIndex = 0;
 
@@ -102,27 +98,24 @@ images.forEach((src, index) => {
   const img = document.createElement("img");
   img.src = src;
   img.alt = `Hero Image ${index + 1}`;
-  img.className = index === 0 ? "active" : ""; // Set the first image as active
+  img.classList.toggle("active", index === 0); // First image is active
   imageWrapper.appendChild(img);
 });
 
 const imgElements = document.querySelectorAll("#image-wrapper img");
 
-// Function to update images
 function updateHeroImages() {
-  const currentImage = imgElements[currentIndex];
-  currentImage.classList.remove("active");
-
+  imgElements[currentIndex].classList.remove("active");
   currentIndex = (currentIndex + 1) % images.length;
-
-  const nextImage = imgElements[currentIndex];
-  nextImage.classList.add("active");
+  imgElements[currentIndex].classList.add("active");
 }
 
 // Change images every 5 seconds
 setInterval(updateHeroImages, 5000);
 
-//   carousel
+// ----------------------------------------
+// Carousel Logic
+// ----------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   const carousel = document.getElementById("carousel");
   const dots = document.querySelectorAll(".dot");
@@ -134,13 +127,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const totalSlides = Math.ceil(totalItems / itemsPerSlide);
 
   let currentIndex = 0;
+  const autoScroll = setInterval(() => moveToNext(), 5000);
 
-  // Auto-scroll function
-  const autoScroll = setInterval(() => {
-    moveToNext();
-  }, 5000);
-
-  // Update carousel position
   function updateCarousel() {
     carousel.style.transform = `translateX(-${
       (currentIndex * 100) / itemsPerSlide
@@ -150,26 +138,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Move to the previous slide
   function moveToPrev() {
     currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
     updateCarousel();
   }
 
-  // Move to the next slide
   function moveToNext() {
     currentIndex = (currentIndex + 1) % totalSlides;
     updateCarousel();
   }
 
-  // Add event listeners
   prev.addEventListener("click", () => {
-    clearInterval(autoScroll); // Pause auto-scroll when manually controlled
+    clearInterval(autoScroll);
     moveToPrev();
   });
 
   next.addEventListener("click", () => {
-    clearInterval(autoScroll); // Pause auto-scroll when manually controlled
+    clearInterval(autoScroll);
     moveToNext();
   });
 
@@ -181,11 +166,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Initial render
-  updateCarousel();
+  updateCarousel(); // Initial render
 });
 
-// faqs
+// ----------------------------------------
+// FAQ Section Logic
+// ----------------------------------------
 document.querySelectorAll(".question").forEach((question) => {
   question.addEventListener("click", function () {
     const parent = this.parentElement;
@@ -198,16 +184,16 @@ document.querySelectorAll(".question").forEach((question) => {
   });
 });
 
-// Add click event listener to each button
+// ----------------------------------------
+// WhatsApp Buttons Logic
+// ----------------------------------------
+const whatsappButtons = document.querySelectorAll(".whatsapp-button");
+
 whatsappButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    const phone = button.getAttribute("data-phone"); // Get the phone number
-    const message = encodeURIComponent(button.getAttribute("data-message")); // Get and encode the message
-
-    // Construct WhatsApp URL
+    const phone = button.getAttribute("data-phone");
+    const message = encodeURIComponent(button.getAttribute("data-message"));
     const whatsappURL = `https://wa.me/${phone}?text=${message}`;
-
-    // Open the URL in a new tab
     window.open(whatsappURL, "_blank");
   });
 });
