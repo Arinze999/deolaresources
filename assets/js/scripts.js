@@ -50,6 +50,8 @@ if (user) {
   Array.from(userbtn).forEach((btn) => {
     const logoutButton = document.createElement("button");
     logoutButton.textContent = "Admin-Logout";
+    logoutButton.classList.add("logout");
+    btn.classList.remove("bg-deolaDarkGreen", "hover:bg-deolaDarkGreen2");
     btn.innerHTML = ""; // Clear existing content
     btn.appendChild(logoutButton);
 
