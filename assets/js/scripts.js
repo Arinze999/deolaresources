@@ -9,6 +9,19 @@ import {
 import Swal from "https://cdn.skypack.dev/sweetalert2@11";
 
 // ----------------------------------------
+// Import Firestore
+// ----------------------------------------
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+
+// ----------------------------------------
 // Firebase Initialization
 // ----------------------------------------
 const firebaseConfig = {
@@ -23,6 +36,9 @@ const firebaseConfig = {
 // Initialize Firebase with a custom app name
 const app = initializeApp(firebaseConfig, "scriptApp");
 const auth = getAuth(app);
+
+// Initialize Firestore
+const db = getFirestore(app);
 
 // ----------------------------------------
 // Navbar Logic
@@ -198,4 +214,183 @@ whatsappButtons.forEach((button) => {
     const whatsappURL = `https://wa.me/${phone}?text=${message}`;
     window.open(whatsappURL, "_blank");
   });
+});
+
+// ----------------------------------------
+// Feedback Form Submission Logic
+// ----------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  const feedbackForm = document.querySelector(".form-section");
+  const submitButton = feedbackForm.querySelector(".form-btn");
+
+  feedbackForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    // Disable the button and show loading state
+    submitButton.textContent = "Submitting...";
+    submitButton.disabled = true;
+
+    // Get form values
+    const fullName = document.getElementById("fullname").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const occupation =
+      document.getElementById("occupation").value.trim() || "Not provided";
+    const location =
+      document.getElementById("location").value.trim() || "Not provided";
+    const message = document.getElementById("message").value.trim();
+
+    // Validate required fields
+    if (!fullName || !email || !message) {
+      Swal.fire({
+        title: "Error!",
+        text: "Please fill out all required fields.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      // Reset button state
+      submitButton.textContent = "Submit Feedback";
+      submitButton.disabled = false;
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      Swal.fire({
+        title: "Error!",
+        text: "Please enter a valid email address.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      // Reset button state
+      submitButton.textContent = "Submit Feedback";
+      submitButton.disabled = false;
+      return;
+    }
+
+    try {
+      // Generate document ID using email and timestamp
+      const timestamp = new Date();
+      const formattedTimestamp = `${timestamp.getFullYear()}${(
+        "0" +
+        (timestamp.getMonth() + 1)
+      ).slice(-2)}${("0" + timestamp.getDate()).slice(-2)}-${(
+        "0" + timestamp.getHours()
+      ).slice(-2)}${("0" + timestamp.getMinutes()).slice(-2)}`;
+      const documentId = `${email}-${formattedTimestamp}`;
+
+      // Feedback data
+      const feedbackData = {
+        fullName,
+        email,
+        occupation,
+        location,
+        message,
+        display: false, // Additional boolean field
+        timestamp: timestamp.toISOString(), // Optional: full timestamp
+      };
+
+      // Save to Firestore
+      const feedbackDoc = doc(db, "feedbacks", documentId);
+      await setDoc(feedbackDoc, feedbackData);
+
+      Swal.fire({
+        title: "Success!",
+        text: "Your feedback has been submitted successfully.",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
+
+      // Optionally clear the form
+      feedbackForm.reset();
+    } catch (error) {
+      console.error("Error submitting feedback:", error);
+      Swal.fire({
+        title: "Error!",
+        text:
+          "An error occurred while submitting your feedback. Please try again.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    } finally {
+      // Reset button state
+      submitButton.textContent = "Submit Feedback";
+      submitButton.disabled = false;
+    }
+  });
+});
+
+// panel button
+// Get all elements with the class 'panel-btn'
+const panelButtons = document.querySelectorAll(".panel-btn");
+
+// Check if there is a user
+if (!user) {
+  // Hide all panel buttons if no user
+  panelButtons.forEach((panel) => {
+    panel.style.display = "none";
+  });
+} else {
+  // Show all panel buttons if there is a user
+  panelButtons.forEach((panel, index) => {
+    panel.style.display = "block";
+    panel.style.cursor = "pointer";
+
+    // Add click event listener
+    panel.addEventListener("click", () => {
+      currentIndex = index;
+      // Example navigation
+      window.location.href = `/admin.html`;
+    });
+  });
+}
+
+// FEEDBACK DISPLAY LOGIC
+document.addEventListener("DOMContentLoaded", async () => {
+  const feedbacksContainer = document.getElementById("feedbacks-container");
+
+  try {
+    // Reference to the 'feedbacks' collection
+    const feedbacksRef = collection(db, "feedbacks");
+
+    // Query for feedbacks where display is true
+    const displayQuery = query(feedbacksRef, where("display", "==", true));
+
+    // Get the query snapshot
+    const querySnapshot = await getDocs(displayQuery);
+
+    // Clear the feedbacks container
+    feedbacksContainer.innerHTML = "";
+
+    // Iterate through the feedbacks and render them
+    querySnapshot.forEach((doc) => {
+      const feedback = doc.data();
+
+      // Create the card element
+      const feedbackCard = document.createElement("div");
+      feedbackCard.className = "test-card";
+
+      feedbackCard.innerHTML = `
+        <div class="test-card-image">
+          <img src="assets/icons/icons8-user-50.png" alt="${feedback.fullName}" />
+        </div>
+        <div class="test-card-content">
+          <p class="test-name">${feedback.fullName}</p>
+          ${feedback.occupation ? `<p class="test-occupation">${feedback.occupation}</p>` : ""}
+          <p class="test-message">"${feedback.message}"</p>
+        </div>
+      `;
+
+      // Append the card to the container
+      feedbacksContainer.appendChild(feedbackCard);
+    });
+
+    // If no feedbacks are available, display a message
+    if (querySnapshot.empty) {
+      feedbacksContainer.innerHTML = "<p>No feedbacks available to display.</p>";
+    }
+  } catch (error) {
+    console.error("Error fetching feedbacks:", error);
+    feedbacksContainer.innerHTML = "<p>Failed to load feedbacks. Please try again later.</p>";
+  }
 });

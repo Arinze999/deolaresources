@@ -110,14 +110,15 @@
 
 /*  */
 .logout {
-  background-color: red;
+  background-color: #b91c1c;
   padding: 0.4rem;
   border-radius: 5px;
   width: 100%;
+  transition: background-color 0.3s;
 }
 
 .logout:hover {
-  background-color: rgb(172, 7, 7);
+  background-color: #7f1d1d;
 }
 
   /* Additional custom styles for form */
@@ -126,6 +127,8 @@
       border-top-right-radius: 0.5rem;
       border-bottom-right-radius: 0.5rem;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding-bottom: 2rem;
+      padding-top: 1rem;
     }
 
     .form-input {
@@ -155,3 +158,74 @@
     .form-btn:hover {
       background-color: #7f1d1d;
     }
+
+    /* Feedback Card Container */
+    .test-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      width: 100%;
+      max-width: 22rem;
+      min-height: 11rem;
+      padding: 1rem;
+      border-radius: 8px;
+      background-color: #f9f9f9; /* Adjust as needed */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Image Section */
+    .test-card-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    
+    .test-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Content Section */
+    .test-card-content {
+      flex: 1;
+    }
+    
+    .test-name {
+      font-weight: 600;
+      color: #2c3e50; /* Adjust to match your theme */
+    }
+    
+    .test-occupation {
+      font-style: italic;
+      color: #7f8c8d; /* Adjust to match your theme */
+      font-size: 13px;
+    }
+    
+    .test-message {
+      margin-top: 0.5rem;
+      font-size: 12px;
+      color: #34495e; /* Adjust to match your theme */
+    }
+
+
+    
+    @media (max-width: 768px) {
+      .form-section {
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+      }
+
+      .form-input {
+        background-color: white;
+        border:  1px dotted #dcdcdc;
+        padding: 0.5rem;
+        width: 100%;
+        border-radius: 0.375rem;
+        transition: border-color 0.3s;
+        font-size:14px;
+      }
+  }
+

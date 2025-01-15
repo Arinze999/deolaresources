@@ -55,6 +55,7 @@
       >
         <a href="\blog.html">Blog</a>
       </li>
+      <div class="panel-btn underline text-deolaDarkGreen2">Admin panel</div>
         <button
         class="bg-deolaDarkGreen text-white p-2 rounded-md hover:bg-deolaDarkGreen2 hover:text-white user-btn"
       >
@@ -63,7 +64,7 @@
       </ul>
 
       <!-- for desktop -->
-      <ul class="hidden lg:flex justify-around items-center gap-2 w-[30rem]">
+      <ul class="hidden lg:flex justify-around items-center gap-2 w-[40rem]">
         <li
           class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
         >
@@ -84,6 +85,7 @@
       >
         <a href="\blog.html">Blog</a>
       </li>
+      <div class="panel-btn underline text-deolaDarkGreen2">Admin panel</div>
         <button
         class="bg-deolaDarkGreen text-white p-2 rounded-md hover:bg-deolaDarkGreen2 hover:text-white user-btn"
       >
@@ -596,91 +598,107 @@
         </div>
       </section>
 
-      <!-- CUSTOMER FEEDBACK FORM will be here later -->
-      <section class="w-full flex flex-col md:gap-[2rem] justify-center items-center py-10 md:py-20 md:px-20 px-5 relative">
-        <h2 class="text-2xl font-semibold">
-          Customer Feedback Form
-        </h2>
-        <p class="text-center text-gray-600">
-          We value your feedback! Please fill out the form below.
-        </p>
-        
-     <div class="w-full flex flex-col md:flex-row max-w-[60rem]">
-         <!-- Image Div -->
-         <div class="md:block w-full h-[20rem] md:h-[40rem] max-w-[30rem] relative overflow-hidden">
-          <div class="absolute inset-0 bg-white opacity-30 z-10 rounded-lg"></div>
-          <img src="assets\images\feedback.jpg" alt="Feedback Background" class="w-full h-auto object-cover">
-        </div>
-      
-        <!-- Feedback Form -->
-        <form action="#" method="POST" class="space-y-4 form-section w-full max-w-[30rem] p-[0.5rem] md:p-[2rem]">
-          <!-- Full Name -->
-          <div>
-            <label for="fullname" class="block text-sm font-medium text-gray-700">
-              Full Name
-            </label>
-            <input 
-              type="text" 
-              id="fullname" 
-              name="fullname" 
-              class="form-input" 
-              placeholder="Enter your full name" 
-              required 
-            />
-          </div>
-      
-          <!-- Occupation -->
-          <div>
-            <label for="occupation" class="block text-sm font-medium text-gray-700">
-              Occupation
-            </label>
-            <input 
-              type="text" 
-              id="occupation" 
-              name="occupation" 
-              class="form-input" 
-              placeholder="Enter your occupation" 
-            />
-          </div>
-      
-          <!-- Location -->
-          <div>
-            <label for="location" class="block text-sm font-medium text-gray-700">
-              Location
-            </label>
-            <input 
-              type="text" 
-              id="location" 
-              name="location" 
-              class="form-input" 
-              placeholder="Enter your location" 
-            />
-          </div>
-      
-          <!-- Feedback Message -->
-          <div>
-            <label for="message" class="block text-sm font-medium text-gray-700">
-              Message
-            </label>
-            <textarea 
-              id="message" 
-              name="message" 
-              rows="4" 
-              class="form-input" 
-              placeholder="Enter your feedback" 
-              required
-            ></textarea>
-          </div>
-      
-          <!-- Submit Button -->
-          <div class="text-center">
-            <button type="submit" class="form-btn">
-              Submit Feedback
-            </button>
-          </div>
-        </form>
-     </div>
-      </section>
+    <!-- CUSTOMER FEEDBACK FORM -->
+<section class="w-full flex flex-col md:gap-[2rem] justify-center items-center py-10 md:py-20 md:px-20 px-5 relative">
+  <h2 class="text-2xl font-semibold">
+    Customer Feedback Form
+  </h2>
+  <p class="text-center text-gray-600">
+    We value your feedback! Please fill out the form below.
+  </p>
+
+  <div class="w-full flex flex-col md:flex-row max-w-[60rem]">
+    <!-- Image Div -->
+    <div class="md:block w-full h-[20rem] md:h-[40rem] max-w-[30rem] relative overflow-hidden">
+      <div class="absolute inset-0 bg-white opacity-30 z-10 rounded-lg"></div>
+      <img src="assets/images/feedback.jpg" alt="Feedback Background" class="w-full h-auto object-cover">
+    </div>
+
+    <!-- Feedback Form -->
+    <form action="#" method="POST" class="space-y-4 form-section w-full max-w-[30rem] p-[0.5rem] md:p-[2rem]">
+      <!-- Full Name -->
+      <div>
+        <label for="fullname" class="block text-sm font-medium text-gray-700">
+          Full Name <span class="text-red-500">*</span>
+        </label>
+        <input 
+          type="text" 
+          id="fullname" 
+          name="fullname" 
+          class="form-input" 
+          placeholder="Enter your full name" 
+          required 
+        />
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">
+          Email <span class="text-red-500">*</span>
+        </label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          class="form-input" 
+          placeholder="Enter your email" 
+          required 
+        />
+      </div>
+
+      <!-- Occupation -->
+      <div>
+        <label for="occupation" class="block text-sm font-medium text-gray-700">
+          Occupation
+        </label>
+        <input 
+          type="text" 
+          id="occupation" 
+          name="occupation" 
+          class="form-input" 
+          placeholder="Enter your occupation" 
+        />
+      </div>
+
+      <!-- Location -->
+      <div>
+        <label for="location" class="block text-sm font-medium text-gray-700">
+          Location
+        </label>
+        <input 
+          type="text" 
+          id="location" 
+          name="location" 
+          class="form-input" 
+          placeholder="Enter your location" 
+        />
+      </div>
+
+      <!-- Feedback Message -->
+      <div>
+        <label for="message" class="block text-sm font-medium text-gray-700">
+          Message <span class="text-red-500">*</span>
+        </label>
+        <textarea 
+          id="message" 
+          name="message" 
+          rows="4" 
+          class="form-input" 
+          placeholder="Enter your feedback" 
+          required
+        ></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button type="submit" class="form-btn">
+          Submit Feedback
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
       
        
 
@@ -693,10 +711,11 @@
           Testimonials
         </h2>
         <div
+          id="feedbacks-container"
           class="w-full max-w-[50rem] h-fit flex flex-wrap flex-col md:flex-row gap-5 justify-center items-center"
         >
           <!-- card -->
-          <div
+          <!-- <div
             class="w-full max-w-[20rem] h-[10rem] bg-deolaBg rounded-md flex justify-between items-start gap-5 p-1"
           >
             <div class="w-[50px] h-[50px] rounded-full overflow-hidden flex">
@@ -709,53 +728,9 @@
                 to all the dishes and its totally worth it"
               </small>
             </div>
+          </div> -->
+
           </div>
-          <!-- card -->
-          <div
-            class="w-full max-w-[20rem] h-[10rem] bg-deolaBg rounded-md flex justify-between items-start gap-5 p-1"
-          >
-            <div class="w-[50px] h-[50px] rounded-full overflow-hidden flex">
-              <img src="assets\icons\icons8-user-50.png" alt="client1.jpg" />
-            </div>
-            <div class="h-full flex-1">
-              <p class="font-semibold text-deolaDarkGreen">John Doe</p>
-              <small class="font-lato"
-                >"Deola has very tasty and delicious menu, I have been addicted
-                to all the dishes and its totally worth it"
-              </small>
-            </div>
-          </div>
-          <!-- card -->
-          <div
-            class="w-full max-w-[20rem] h-[10rem] bg-deolaBg rounded-md flex justify-between items-start gap-5 p-1"
-          >
-            <div class="w-[50px] h-[50px] rounded-full overflow-hidden flex">
-              <img src="assets\icons\icons8-user-50.png" alt="client1.jpg" />
-            </div>
-            <div class="h-full flex-1">
-              <p class="font-semibold text-deolaDarkGreen">John Doe</p>
-              <small class="font-lato"
-                >"Deola has very tasty and delicious menu, I have been addicted
-                to all the dishes and its totally worth it"
-              </small>
-            </div>
-          </div>
-          <!-- card -->
-          <div
-            class="w-full max-w-[20rem] h-[10rem] bg-deolaBg rounded-md flex justify-between items-start gap-5 p-1"
-          >
-            <div class="w-[50px] h-[50px] rounded-full overflow-hidden flex">
-              <img src="assets\icons\icons8-user-50.png" alt="client1.jpg" />
-            </div>
-            <div class="h-full flex-1">
-              <p class="font-semibold text-deolaDarkGreen">John Doe</p>
-              <small class="font-lato"
-                >"Deola has very tasty and delicious menu, I have been addicted
-                to all the dishes and its totally worth it"
-              </small>
-            </div>
-          </div>
-        </div>
         <button
           class="whatsapp-button text-white bg-deolaDarkGreen rounded-[50px] font-[400] hover:bg-inherit hover:border-[2px] hover:border-deolaDarkGreen hover:text-deolaDarkGreen w-[10rem] py-2 px-4 h-[3rem]"
           data-phone="2348132124871" data-message="Hello Deola Resources! I would like to ">
