@@ -57,79 +57,101 @@ navBtn.addEventListener("click", () => {
 });
 
 // ----------------------------------------
-// User Authentication and Logout
+// Admin Login/Logout Button Visibility
 // ----------------------------------------
-const user = localStorage.getItem("deolaToken");
-const userbtn = document.getElementsByClassName("user-btn");
+const admin = localStorage.getItem("deolaToken"); // Check for admin token
 
-if (user) {
-  Array.from(userbtn).forEach((btn) => {
-    const logoutButton = document.createElement("button");
-    logoutButton.textContent = "Admin-Logout";
-    logoutButton.classList.add("logout");
-    btn.classList.remove("bg-deolaDarkGreen", "hover:bg-deolaDarkGreen2");
-    btn.innerHTML = ""; // Clear existing content
-    btn.appendChild(logoutButton);
+document.addEventListener("DOMContentLoaded", () => {
+  const loginButtons = document.querySelectorAll(".login");
+  const logoutButtons = document.querySelectorAll(".logout");
 
-    logoutButton.addEventListener("click", () => {
-      signOut(auth)
-        .then(() => {
-          localStorage.removeItem("deolaToken");
-          Swal.fire({
-            title: "Success!",
-            text: "Logged out successfully.",
-            icon: "success",
-            confirmButtonText: "OK",
-          });
-          setTimeout(() => window.location.reload(), 2000);
-        })
-        .catch((error) => {
-          console.error("Error logging out:", error);
-          Swal.fire({
-            title: "Error!",
-            text: "An error occurred during logout. Please try again.",
-            icon: "error",
-            confirmButtonText: "OK",
-          });
+  // Check if login and logout buttons exist
+  if (loginButtons.length > 0 && logoutButtons.length > 0) {
+    if (admin) {
+      // If admin exists, hide login buttons and show logout buttons
+      loginButtons.forEach((button) => {
+        button.style.display = "none";
+      });
+
+      logoutButtons.forEach((button) => {
+        button.style.display = "block";
+
+        // Add click event to logout buttons
+        button.addEventListener("click", async () => {
+          try {
+            await signOut(auth); // Sign out the admin using Firebase Auth
+            localStorage.removeItem("deolaToken"); // Remove admin token
+
+            Swal.fire({
+              title: "Success!",
+              text: "You have been logged out successfully.",
+              icon: "success",
+              confirmButtonText: "OK",
+            }).then(() => {
+              window.location.reload(); // Reload page to update state
+            });
+          } catch (error) {
+            console.error("Error logging out:", error);
+            Swal.fire({
+              title: "Error",
+              text: "An error occurred during logout. Please try again.",
+              icon: "error",
+              confirmButtonText: "OK",
+            });
+          }
         });
-    });
-  });
-}
+      });
+    } else {
+      // If no admin, show login buttons and hide logout buttons
+      loginButtons.forEach((button) => {
+        button.style.display = "block";
+      });
+
+      logoutButtons.forEach((button) => {
+        button.style.display = "none";
+      });
+    }
+  }
+});
 
 // ----------------------------------------
 // Hero Section Logic
 // ----------------------------------------
-const images = [
-  "assets/images/heroImg1.jpg",
-  "assets/images/heroImg2.jpg",
-  "assets/images/heroImg3.jpg",
-  "assets/images/heroImg4.jpg",
-  "assets/images/heroImg5.jpg",
-  "assets/images/heroImg6.jpg",
-  "assets/images/heroImg7.jpg",
-];
 const imageWrapper = document.getElementById("image-wrapper");
-let currentIndex = 0;
 
-// Create and append img elements
-images.forEach((src, index) => {
-  const img = document.createElement("img");
-  img.src = src;
-  img.alt = `Hero Image ${index + 1}`;
-  img.classList.toggle("active", index === 0); // First image is active
-  imageWrapper.appendChild(img);
-});
+if (imageWrapper) {
+  const images = [
+    "assets/images/heroImg1.jpg",
+    "assets/images/heroImg2.jpg",
+    "assets/images/heroImg3.jpg",
+    "assets/images/heroImg4.jpg",
+    "assets/images/heroImg5.jpg",
+    "assets/images/heroImg6.jpg",
+    "assets/images/heroImg7.jpg",
+  ];
 
-const imgElements = document.querySelectorAll("#image-wrapper img");
+  let currentIndex = 0;
 
-function updateHeroImages() {
-  imgElements[currentIndex].classList.remove("active");
-  currentIndex = (currentIndex + 1) % images.length;
-  imgElements[currentIndex].classList.add("active");
+  // Create and append img elements
+  images.forEach((src, index) => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = `Hero Image ${index + 1}`;
+    img.classList.toggle("active", index === 0); // First image is active
+    imageWrapper.appendChild(img);
+  });
+
+  const imgElements = document.querySelectorAll("#image-wrapper img");
+
+  function updateHeroImages() {
+    imgElements[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex + 1) % images.length;
+    imgElements[currentIndex].classList.add("active");
+  }
+
+  // Change images every 5 seconds
+  setInterval(updateHeroImages, 5000);
 }
-
-// Change images every 5 seconds
-setInterval(updateHeroImages, 5000);
 
 // ----------------------------------------
 // Carousel Logic
@@ -140,51 +162,53 @@ document.addEventListener("DOMContentLoaded", () => {
   const prev = document.getElementById("prev");
   const next = document.getElementById("next");
 
-  const itemsPerSlide = window.innerWidth < 640 ? 1 : 1;
-  const totalItems = document.querySelectorAll(".carousel-item").length;
-  const totalSlides = Math.ceil(totalItems / itemsPerSlide);
+  if (carousel && dots) {
+    const itemsPerSlide = window.innerWidth < 640 ? 1 : 1;
+    const totalItems = document.querySelectorAll(".carousel-item").length;
+    const totalSlides = Math.ceil(totalItems / itemsPerSlide);
 
-  let currentIndex = 0;
-  const autoScroll = setInterval(() => moveToNext(), 5000);
+    let currentIndex = 0;
+    const autoScroll = setInterval(() => moveToNext(), 5000);
 
-  function updateCarousel() {
-    carousel.style.transform = `translateX(-${
-      (currentIndex * 100) / itemsPerSlide
-    }%)`;
-    dots.forEach((dot, index) => {
-      dot.classList.toggle("active", index === currentIndex);
-    });
-  }
+    function updateCarousel() {
+      carousel.style.transform = `translateX(-${
+        (currentIndex * 100) / itemsPerSlide
+      }%)`;
+      dots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentIndex);
+      });
+    }
 
-  function moveToPrev() {
-    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    updateCarousel();
-  }
-
-  function moveToNext() {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    updateCarousel();
-  }
-
-  prev.addEventListener("click", () => {
-    clearInterval(autoScroll);
-    moveToPrev();
-  });
-
-  next.addEventListener("click", () => {
-    clearInterval(autoScroll);
-    moveToNext();
-  });
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      clearInterval(autoScroll);
-      currentIndex = index;
+    function moveToPrev() {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
       updateCarousel();
-    });
-  });
+    }
 
-  updateCarousel(); // Initial render
+    function moveToNext() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateCarousel();
+    }
+
+    prev.addEventListener("click", () => {
+      clearInterval(autoScroll);
+      moveToPrev();
+    });
+
+    next.addEventListener("click", () => {
+      clearInterval(autoScroll);
+      moveToNext();
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        clearInterval(autoScroll);
+        currentIndex = index;
+        updateCarousel();
+      });
+    });
+
+    updateCarousel(); // Initial render
+  }
 });
 
 // ----------------------------------------
@@ -221,126 +245,128 @@ whatsappButtons.forEach((button) => {
 // ----------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   const feedbackForm = document.querySelector(".form-section");
-  const submitButton = feedbackForm.querySelector(".form-btn");
+  if (feedbackForm) {
+    const submitButton = feedbackForm.querySelector(".form-btn");
 
-  feedbackForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
+    feedbackForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
 
-    // Disable the button and show loading state
-    submitButton.textContent = "Submitting...";
-    submitButton.disabled = true;
+      // Disable the button and show loading state
+      submitButton.textContent = "Submitting...";
+      submitButton.disabled = true;
 
-    // Get form values
-    const fullName = document.getElementById("fullname").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const occupation =
-      document.getElementById("occupation").value.trim() || "Not provided";
-    const location =
-      document.getElementById("location").value.trim() || "Not provided";
-    const message = document.getElementById("message").value.trim();
+      // Get form values
+      const fullName = document.getElementById("fullname").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const occupation =
+        document.getElementById("occupation").value.trim() || "Not provided";
+      const location =
+        document.getElementById("location").value.trim() || "Not provided";
+      const message = document.getElementById("message").value.trim();
 
-    // Validate required fields
-    if (!fullName || !email || !message) {
-      Swal.fire({
-        title: "Error!",
-        text: "Please fill out all required fields.",
-        icon: "error",
-        confirmButtonText: "OK",
-      });
-      // Reset button state
-      submitButton.textContent = "Submit Feedback";
-      submitButton.disabled = false;
-      return;
-    }
+      // Validate required fields
+      if (!fullName || !email || !message) {
+        Swal.fire({
+          title: "Error!",
+          text: "Please fill out all required fields.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+        // Reset button state
+        submitButton.textContent = "Submit Feedback";
+        submitButton.disabled = false;
+        return;
+      }
 
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      Swal.fire({
-        title: "Error!",
-        text: "Please enter a valid email address.",
-        icon: "error",
-        confirmButtonText: "OK",
-      });
-      // Reset button state
-      submitButton.textContent = "Submit Feedback";
-      submitButton.disabled = false;
-      return;
-    }
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        Swal.fire({
+          title: "Error!",
+          text: "Please enter a valid email address.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+        // Reset button state
+        submitButton.textContent = "Submit Feedback";
+        submitButton.disabled = false;
+        return;
+      }
 
-    try {
-      // Generate document ID using email and timestamp
-      const timestamp = new Date();
-      const formattedTimestamp = `${timestamp.getFullYear()}${(
-        "0" +
-        (timestamp.getMonth() + 1)
-      ).slice(-2)}${("0" + timestamp.getDate()).slice(-2)}-${(
-        "0" + timestamp.getHours()
-      ).slice(-2)}${("0" + timestamp.getMinutes()).slice(-2)}`;
-      const documentId = `${email}-${formattedTimestamp}`;
+      try {
+        // Generate document ID using email and timestamp
+        const timestamp = new Date();
+        const formattedTimestamp = `${timestamp.getFullYear()}${(
+          "0" +
+          (timestamp.getMonth() + 1)
+        ).slice(-2)}${("0" + timestamp.getDate()).slice(-2)}-${(
+          "0" + timestamp.getHours()
+        ).slice(-2)}${("0" + timestamp.getMinutes()).slice(-2)}`;
+        const documentId = `${email}-${formattedTimestamp}`;
 
-      // Feedback data
-      const feedbackData = {
-        fullName,
-        email,
-        occupation,
-        location,
-        message,
-        display: false, // Additional boolean field
-        timestamp: timestamp.toISOString(), // Optional: full timestamp
-      };
+        // Feedback data
+        const feedbackData = {
+          fullName,
+          email,
+          occupation,
+          location,
+          message,
+          display: false, // Additional boolean field
+          timestamp: timestamp.toISOString(), // Optional: full timestamp
+        };
 
-      // Save to Firestore
-      const feedbackDoc = doc(db, "feedbacks", documentId);
-      await setDoc(feedbackDoc, feedbackData);
+        // Save to Firestore
+        const feedbackDoc = doc(db, "feedbacks", documentId);
+        await setDoc(feedbackDoc, feedbackData);
 
-      Swal.fire({
-        title: "Success!",
-        text: "Your feedback has been submitted successfully.",
-        icon: "success",
-        confirmButtonText: "OK",
-      });
+        Swal.fire({
+          title: "Success!",
+          text: "Your feedback has been submitted successfully.",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
 
-      // Optionally clear the form
-      feedbackForm.reset();
-    } catch (error) {
-      console.error("Error submitting feedback:", error);
-      Swal.fire({
-        title: "Error!",
-        text:
-          "An error occurred while submitting your feedback. Please try again.",
-        icon: "error",
-        confirmButtonText: "OK",
-      });
-    } finally {
-      // Reset button state
-      submitButton.textContent = "Submit Feedback";
-      submitButton.disabled = false;
-    }
-  });
+        // Optionally clear the form
+        feedbackForm.reset();
+      } catch (error) {
+        console.error("Error submitting feedback:", error);
+        Swal.fire({
+          title: "Error!",
+          text:
+            "An error occurred while submitting your feedback. Please try again.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      } finally {
+        // Reset button state
+        submitButton.textContent = "Submit Feedback";
+        submitButton.disabled = false;
+      }
+    });
+  }
 });
 
 // panel button
 // Get all elements with the class 'panel-btn'
 const panelButtons = document.querySelectorAll(".panel-btn");
 
-// Check if there is a user
-if (!user) {
-  // Hide all panel buttons if no user
+// Check if there is a admin
+if (!admin) {
+  // Hide all panel buttons if no admin
   panelButtons.forEach((panel) => {
     panel.style.display = "none";
   });
 } else {
-  // Show all panel buttons if there is a user
+  // Show all panel buttons if there is a admin
   panelButtons.forEach((panel, index) => {
     panel.style.display = "block";
     panel.style.cursor = "pointer";
 
     // Add click event listener
     panel.addEventListener("click", () => {
-      currentIndex = index;
+      // currentIndex = index;
       // Example navigation
-      window.location.href = `/admin.html`;
+      window.location.href = `/admin-panel`;
     });
   });
 }
@@ -349,48 +375,185 @@ if (!user) {
 document.addEventListener("DOMContentLoaded", async () => {
   const feedbacksContainer = document.getElementById("feedbacks-container");
 
-  try {
-    // Reference to the 'feedbacks' collection
-    const feedbacksRef = collection(db, "feedbacks");
+  if (feedbacksContainer) {
+    try {
+      // Reference to the 'feedbacks' collection
+      const feedbacksRef = collection(db, "feedbacks");
 
-    // Query for feedbacks where display is true
-    const displayQuery = query(feedbacksRef, where("display", "==", true));
+      // Query for feedbacks where display is true
+      const displayQuery = query(feedbacksRef, where("display", "==", true));
 
-    // Get the query snapshot
-    const querySnapshot = await getDocs(displayQuery);
+      // Get the query snapshot
+      const querySnapshot = await getDocs(displayQuery);
 
-    // Clear the feedbacks container
-    feedbacksContainer.innerHTML = "";
+      // Clear the feedbacks container
+      feedbacksContainer.innerHTML = "";
 
-    // Iterate through the feedbacks and render them
-    querySnapshot.forEach((doc) => {
-      const feedback = doc.data();
+      // Iterate through the feedbacks and render them
+      querySnapshot.forEach((doc) => {
+        const feedback = doc.data();
 
-      // Create the card element
-      const feedbackCard = document.createElement("div");
-      feedbackCard.className = "test-card";
+        // Create the card element
+        const feedbackCard = document.createElement("div");
+        feedbackCard.className = "test-card";
 
-      feedbackCard.innerHTML = `
+        feedbackCard.innerHTML = `
         <div class="test-card-image">
-          <img src="assets/icons/icons8-user-50.png" alt="${feedback.fullName}" />
+          <img src="assets/icons/icons8-user-50.png" alt="${
+            feedback.fullName
+          }" />
         </div>
         <div class="test-card-content">
           <p class="test-name">${feedback.fullName}</p>
-          ${feedback.occupation ? `<p class="test-occupation">${feedback.occupation}</p>` : ""}
+          ${
+            feedback.occupation
+              ? `<p class="test-occupation">${feedback.occupation}</p>`
+              : ""
+          }
           <p class="test-message">"${feedback.message}"</p>
         </div>
       `;
 
-      // Append the card to the container
-      feedbacksContainer.appendChild(feedbackCard);
-    });
+        // Append the card to the container
+        feedbacksContainer.appendChild(feedbackCard);
+      });
 
-    // If no feedbacks are available, display a message
-    if (querySnapshot.empty) {
-      feedbacksContainer.innerHTML = "<p>No feedbacks available to display.</p>";
+      // If no feedbacks are available, display a message
+      if (querySnapshot.empty) {
+        feedbacksContainer.innerHTML = "<p>Nothing at the moment.</p>";
+      }
+    } catch (error) {
+      console.error("Error fetching feedbacks:", error);
+      feedbacksContainer.innerHTML =
+        "<p>Failed to load feedbacks. Please try again later.</p>";
     }
-  } catch (error) {
-    console.error("Error fetching feedbacks:", error);
-    feedbacksContainer.innerHTML = "<p>Failed to load feedbacks. Please try again later.</p>";
   }
+});
+
+// ----------------------------------------
+// Auto Logout After 1 Hour
+// ----------------------------------------
+function startAutoLogoutTimer() {
+  // Set a timeout to log the admin out after 1 hour (3600000 milliseconds)
+  const logoutTimeout = 60 * 60 * 1000; // 1 hour in milliseconds
+
+  setTimeout(() => {
+    // Sign out the admin
+    signOut(auth)
+      .then(() => {
+        localStorage.removeItem("deolaToken"); // Clear the token
+        Swal.fire({
+          title: "Session Expired",
+          text: "You have been logged out due to inactivity.",
+          icon: "info",
+          confirmButtonText: "OK",
+        });
+        setTimeout(() => window.location.reload(), 2000); // Reload page after logout
+      })
+      .catch((error) => {
+        console.error("Error logging out:", error);
+        Swal.fire({
+          title: "Error",
+          text: "An error occurred during logout. Please try again.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      });
+  }, logoutTimeout);
+}
+
+// ----------------------------------------
+// Initialize Auto Logout for Admin
+// ----------------------------------------
+if (admin) {
+  // Start the auto logout timer if the admin is logged in
+  startAutoLogoutTimer();
+}
+
+// ----------------------------------------
+// Email Subscription Logic with SweetAlert
+// ----------------------------------------
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Select elements by class name
+  const emailInputs = document.querySelectorAll(".email-input");
+  const submitButtons = document.querySelectorAll(".email-submit");
+
+  // Ensure elements exist
+  if (emailInputs.length > 0 && submitButtons.length > 0) {
+    submitButtons.forEach((button, index) => {
+      const input = emailInputs[index]; // Match button with the corresponding input
+
+      if (button && input) {
+        // Add event listener to the button
+        button.addEventListener("click", async (event) => {
+          event.preventDefault(); // Prevent default form submission behavior
+
+          const email = input.value.trim(); // Get the email value
+
+          // Validate email format
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            Swal.fire({
+              title: "Invalid Email",
+              text: "Please enter a valid email address.",
+              icon: "warning",
+              confirmButtonText: "OK",
+            });
+            return;
+          }
+
+          try {
+            // Add email to Firestore
+            const emailDoc = doc(collection(db, "emailList")); // Generate a new document ID
+            await setDoc(emailDoc, { email });
+
+            Swal.fire({
+              title: "Success!",
+              text: "Email added",
+              icon: "success",
+              confirmButtonText: "OK",
+            });
+            input.value = ""; // Clear the input field
+          } catch (error) {
+            console.error("Error adding email to Firestore:", error);
+            Swal.fire({
+              title: "Error",
+              text: "Failed to add email. Please try again.",
+              icon: "error",
+              confirmButtonText: "OK",
+            });
+          }
+        });
+      }
+    });
+  }
+});
+
+// animation
+document.addEventListener("DOMContentLoaded", () => {
+  const animatedElements = document.querySelectorAll(".animate");
+
+  // Intersection Observer Options
+  const observerOptions = {
+    threshold: 0.1, // Trigger when 10% of the element is visible
+  };
+
+  // Intersection Observer Callback
+  const observerCallback = (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active"); // Add active class
+        observer.unobserve(entry.target); // Stop observing once triggered
+      }
+    });
+  };
+
+  // Create Intersection Observer
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  // Observe Each Element
+  animatedElements.forEach((element) => {
+    observer.observe(element);
+  });
 });

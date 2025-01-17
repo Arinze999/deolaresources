@@ -52,7 +52,7 @@ async function signInAdmin(email, password, button) {
     // Save token and redirect to home page
     localStorage.setItem("deolaToken", JSON.stringify(user.accessToken));
     setTimeout(() => {
-      window.location.href = "/"; // Adjust redirect URL as needed
+      window.location.href = "../"; // Adjust redirect URL as needed
     }, 2000);
   } catch (error) {
     const errorMessage = error.message;

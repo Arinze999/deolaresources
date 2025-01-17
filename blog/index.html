@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/output.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/blog.css" />
+    <title>Document</title>
+  </head>
+  <body class="font-poppings">
+    <!-- <header> -->
+    <nav
+      class="sticky top-0 z-[100] w-full bg-white flex items-center justify-between p-5"
+    >
+      <div class="w-[50px] h-[50px] object-contain">
+        <a href="../"
+          ><img
+            src="../assets\images\deolaLogo.png"
+            alt=""
+            class="w-full h-auto"
+        /></a>
+      </div>
+      <div id="nav-toggle" class="lg:hidden cursor-pointer w-fit h-fit">
+        <img
+          id="open"
+          src="../assets/icons/hamNav.png"
+          alt=""
+          class="w-full h-auto"
+        />
+        <img
+          id="close"
+          src="../assets/icons/hamX.png"
+          alt=""
+          class="w-full h-auto hidden"
+        />
+      </div>
+
+      <!-- for mobile -->
+      <ul id="d-navigate" class="p-5 hide lg:hidden bg-white">
+        <li
+          class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
+        >
+          <a href="../">Home</a>
+        </li>
+        <li
+          class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
+        >
+          <a href="../aboutus">About us</a>
+        </li>
+        <!-- <li
+          class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
+        >
+          <a href="\menu.html">Menu</a>
+        </li> -->
+        <li
+          class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
+        >
+          <a href="..\blog">Blog</a>
+        </li>
+        <div class="panel-btn hidden underline text-deolaDarkGreen2">
+          Admin panel
+        </div>
+        <button
+          class="bg-deolaDarkGreen text-white p-2 rounded-md hover:bg-deolaDarkGreen2 hover:text-white login hidden"
+        >
+          <a href="/admin-signin">Admin-SignIn</a>
+        </button>
+        <button class="logout">Admin-logout</button>
+      </ul>
+
+      <!-- for desktop -->
+      <ul class="hidden lg:flex justify-around items-center gap-2 w-[30rem]">
+        <li
+          class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
+        >
+          <a href="../">Home</a>
+        </li>
+        <li
+          class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
+        >
+          <a href="../aboutus">About us</a>
+        </li>
+        <!-- <li
+          class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
+        >
+          <a href="../menu">Menu</a>
+        </li> -->
+        <li
+          class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
+        >
+          <a href="../blog">Blog</a>
+        </li>
+        <div class="panel-btn hidden underline text-deolaDarkGreen2">
+          Admin panel
+        </div>
+        <button
+          class="bg-deolaDarkGreen text-white p-2 rounded-md hover:bg-deolaDarkGreen2 hover:text-white login hidden"
+        >
+          <a href="/admin-signin">Admin-SignIn</a>
+        </button>
+        <button class="logout">Admin-logout</button>
+      </ul>
+    </nav>
+    <!-- </header> -->
+    <main class="flex flex-col justify-start items-center gap-5 min-h-screen">
+      <h2 class="text-2xl relative">Welcome to Our blog</h2>
+      <button id="view-form" class="view-form-button">Create a Post</button>
+      <small>Stay Up-to-Date about Our Activities</small>
+
+      <!-- blog card section -->
+      <section
+        id="posts-container"
+        class="w-[95%] max-w-[700px] rounded-md flex flex-col gap-[2rem] justify-start items-center py-10 md:py-20 md:px-20 relative bg-deolaBg"
+      >
+        <!-- blog segments -->
+        <!-- <div class="border-b-[2px] h-fit w-full p-2">
+          <div class="h-[13rem] md:h-[15rem] w-full overflow-hidden mb-5">
+            <img
+              src="https://i0.wp.com/thebftonline.com/wp-content/uploads/2022/08/onga.jpg?fit=1080%2C720&ssl=1"
+              alt="post.jpg"
+              class="object-cover w-full h-full"
+            />
+          </div>
+          <p class="text-[14px] mb-5">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
+            adipisci recusandae impedit, velit tempora enim doloremque! Maxime,
+            vitae iusto. Necessitatibus pariatur inventore quae commodi deserunt
+            tenetur laudantium maiores consectetur. Laudantium.
+          </p>
+        </div> -->
+      </section>
+
+      <!-- post form -->
+      <div id="post-form-modal" class="modal hidden">
+        <div id="modal-content" class="modal-content">
+          <button id="close-modal" class="close-button">✕</button>
+          <h2 class="font-semibold">Create a Post</h2>
+          <form id="post-form">
+            <div class="form-group">
+              <input type="file" id="postImg" />
+              <div id="image-preview" class="image-preview">
+                <p>No image selected</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="postText">Text</label>
+              <textarea id="postText" rows="4"></textarea>
+            </div>
+            <button type="submit" class="submit-button">Submit</button>
+          </form>
+        </div>
+      </div>
+      <!--  -->
+
+      <!-- <div class="flex items-end">
+        <img src="assets\icons\like.png" alt="" /><span class="text-[12px]"
+          >200</span
+        >
+      </div> -->
+    </main>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-deolaDarkGreen2 text-white w-full h-fit flex flex-col items-center gap-5 py-5"
+    >
+      <ul
+        class="h-fit w-full max-w-[60rem] p-2 py-10 flex flex-col md:flex-row md:items-center justify-between gap-2 border-b-[1px] border-gray-500"
+      >
+        <li class="flex-1 flex justify-start items-center gap-2">
+          <div class="w-[30px] h-[30px]">
+            <img
+              src="../assets/icons/location.png"
+              alt="location.png"
+              class="w-full h-auto object-cover"
+            />
+          </div>
+          <div>
+            <p>Find Us</p>
+            <small class="text-gray-400 text-[12px]"
+              >Umuonyeali Timber market, Owerri, Imo</small
+            >
+          </div>
+        </li>
+        <li class="flex-1 flex justify-start items-center gap-2">
+          <div class="w-[30px] h-[30px]">
+            <img src="../assets/icons/whatsapp.png" alt="location.png" />
+          </div>
+          <div>
+            <p>Call/Whattsap</p>
+            <small class="text-gray-400 text-[12px]">+2348132124871</small>
+          </div>
+        </li>
+        <li class="flex-1 flex justify-start items-center gap-2">
+          <div class="w-[30px] h-[30px]">
+            <img src="../assets/icons/mail.png" alt="location.png" />
+          </div>
+          <div>
+            <p>Mail</p>
+            <a target="_blank" href="mailto:deolaresources@gmail.com"
+              ><small class="text-gray-400 text-[12px]"
+                >deolaresources@gmail.com</small
+              ></a
+            >
+          </div>
+        </li>
+      </ul>
+      <!--  -->
+      <div
+        class="h-fit w-full max-w-[60rem] p-2 flex flex-col md:flex-row gap-4 justify-between"
+      >
+        <div class="flex-1 flex flex-col gap-2">
+          <div class="w-[50px] h-[50px] object-contain">
+            <img
+              src="../assets/images/deolaLogo.png"
+              alt=""
+              class="w-full h-auto"
+            />
+          </div>
+          <small class="text-gray-400 text-[12px]">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo
+            nesciunt quia cupiditate. Unde repellat perspiciatis deleniti
+            reprehenderit
+          </small>
+          <p class="font-semibold">Follow Us</p>
+          <ul class="flex gap-2 items-center">
+            <li>
+              <a
+                target="_blank"
+                href="https://www.facebook.com/profile.php?id=100063540555025&mibextid=ZbWKwL"
+                ><img src="../assets/images/facebook.png" alt="fb.png"
+              /></a>
+            </li>
+            <li>
+              <a
+                target="_blank"
+                href="https://www.instagram.com/deolaresources/profilecard/?igsh=MWk2cm8xMXptbXlncQ=="
+                ><img src="../assets/images/instagram.png" alt="insta.png"
+              /></a>
+            </li>
+            <li>
+              <a href=""
+                ><img src="../assets/images/tiktok.png" alt="iktok.png"
+              /></a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex-1">
+          <p class="font-semibold relative w-fit mb-5">
+            Top Sections
+            <span
+              class="absolute bg-deolaYellow left-0 bottom-[-10px] w-[50%] h-[3px]"
+            ></span>
+          </p>
+          <a class="underline text-sm" href="#hero">Home</a><br />
+          <a class="underline text-sm" href="#about">About Us</a><br />
+          <a class="underline text-sm" href="#services">Services</a>
+        </div>
+        <div class="flex-1">
+          <p class="font-semibold relative w-fit mb-5">
+            Join the community
+            <span
+              class="absolute bg-deolaYellow left-0 bottom-[-10px] w-[50%] h-[3px]"
+            ></span>
+          </p>
+          <div
+            class="w-full h-[2.5rem] relative border-[2px] overflow-hidden rounded-md"
+          >
+            <input
+              type="text"
+              class="email-input w-full h-full text-black text-[12px] p-2 border-none outline-none"
+              placeholder="Enter email address"
+            />
+            <button
+              class="email-submit w-[4rem] h-full absolute right-0 bottom-0 bg-deolaYellow rounded-md flex items-center justify-center"
+            >
+              <img src="../assets/icons/send.png" alt="" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <p class="w-full max-w-[60rem] text-[12px] text-center py-2">
+        Copyright &copy; deolaresources 2024. All Right Reserved
+      </p>
+    </footer>
+    <!-- <script type="module" src="../global.js"></script> -->
+    <script type="module" src="../assets/js/scripts.js"></script>
+    <script type="module" src="../assets/js/blog.js"></script>
+  </body>
+</html>

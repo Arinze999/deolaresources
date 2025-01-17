@@ -235,9 +235,11 @@ async function renderBlogPosts(blogPosts) {
     postsContainer.appendChild(postElement);
 
     const deleteButton = postElement.querySelector(".delete-btn");
-    deleteButton.addEventListener("click", () =>
-      handleDelete(post.id, post.imageUrl)
-    );
+    if (deleteButton) {
+      deleteButton.addEventListener("click", () =>
+        handleDelete(post.id, post.imageUrl)
+      );
+    }
   });
 }
 

@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets\css\output.css" />
-    <link rel="stylesheet" href="assets\css\style.css" />
+    <link rel="stylesheet" href="assets/css/output.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <title>Document</title>
   </head>
   <body class="font-poppings">
@@ -14,20 +14,20 @@
       class="sticky top-0 z-[100] w-full bg-white flex items-center justify-between p-5"
     >
       <div class="w-[50px] h-[50px] object-contain">
-        <a href="\"
-        ><img src="assets\images\deolaLogo.png" alt="" class="w-full h-auto"
+        <a href="/"
+        ><img src="assets/images/deolaLogo.png" alt="" class="w-full h-auto"
       /></a>
       </div>
       <div id="nav-toggle" class="lg:hidden cursor-pointer w-fit h-fit">
         <img
           id="open"
-          src="assets\icons\hamNav.png"
+          src="assets/icons/hamNav.png"
           alt=""
           class="w-full h-auto"
         />
         <img
           id="close"
-          src="assets\icons\hamX.png"
+          src="assets/icons/hamX.png"
           alt=""
           class="w-full h-auto hidden"
         />
@@ -38,59 +38,61 @@
         <li
           class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
         >
-          <a href="\">Home</a>
+          <a href="/">Home</a>
         </li>
         <li
           class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
         >
-          <a href="\about.html">About us</a>
+          <a href="/aboutus">About us</a>
         </li>
-        <li
+        <!-- <li
           class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
         >
           <a href="\menu.html">Menu</a>
-        </li>
+        </li> -->
         <li
         class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
       >
-        <a href="\blog.html">Blog</a>
+        <a href="/blog">Blog</a>
       </li>
-      <div class="panel-btn underline text-deolaDarkGreen2">Admin panel</div>
-        <button
-        class="bg-deolaDarkGreen text-white p-2 rounded-md hover:bg-deolaDarkGreen2 hover:text-white user-btn"
-      >
-        <a href="\admin-signin.html">Admin-SignIn</a>
-      </button>
+      <div class="panel-btn hidden underline text-deolaDarkGreen2">Admin panel</div>
+      <button
+      class="bg-deolaDarkGreen text-white p-2 rounded-md hover:bg-deolaDarkGreen2 hover:text-white login hidden"
+    >
+      <a href="/admin-signin">Admin-SignIn</a>
+    </button>
+    <button class="logout">Admin-logout</button>
       </ul>
 
       <!-- for desktop -->
-      <ul class="hidden lg:flex justify-around items-center gap-2 w-[40rem]">
+      <ul class="hidden lg:flex justify-around items-center gap-2 w-[30rem]">
         <li
           class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
         >
-          <a href="\">Home</a>
+          <a href="/">Home</a>
         </li>
         <li
           class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
         >
-          <a href="\about.html">About us</a>
+          <a href="/aboutus">About us</a>
         </li>
-        <li
+        <!-- <li
           class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
         >
           <a href="\menu.html">Menu</a>
-        </li>
+        </li> -->
         <li
         class="hover:text-deolaDarkGreen2 active:text-deolaDarkGreen2 cursor-pointer"
       >
-        <a href="\blog.html">Blog</a>
+        <a href="/blog">Blog</a>
       </li>
-      <div class="panel-btn underline text-deolaDarkGreen2">Admin panel</div>
+      <div class="panel-btn hidden underline text-deolaDarkGreen2">Admin panel</div>
         <button
-        class="bg-deolaDarkGreen text-white p-2 rounded-md hover:bg-deolaDarkGreen2 hover:text-white user-btn"
+        class="bg-deolaDarkGreen text-white p-2 rounded-md hover:bg-deolaDarkGreen2 hover:text-white login hidden"
       >
-        <a href="\admin-signin.html">Admin-SignIn</a>
+        <a href="/admin-signin">Admin-SignIn</a>
       </button>
+      <button class="logout">Admin-logout</button>
       </ul>
     </nav>
     <!-- </header> -->
@@ -121,7 +123,7 @@
             The delight in food!
           </p>
           <button
-            class="whatsapp-button text-white bg-deolaDarkGreen rounded-[50px] mt-10 mb-10 md:text-2xl font-[500] hover:bg-inherit hover:border-[2px] hover:border-deolaDarkGreen2 hover:text-white md:w-[16rem] w-[10rem] md:h-[5rem] h-[3rem]"
+            class="whatsapp-button text-white bg-deolaDarkGreen rounded-[50px] mt-10 mb-10 md:text-2xl font-[500] hover:bg-inherit hover:border-[2px] hover:border-white hover:text-white md:w-[16rem] w-[10rem] md:h-[5rem] h-[3rem]"
             data-phone="2348132124871" data-message="Hello Deola Resources! I would like to ">
             Book Us Now!
           </button>
@@ -152,125 +154,110 @@
         <div
           class="carousel-container flex relative overflow-hidden rounded-md"
         >
-          <!-- Carousel Wrapper -->
-          <div
-            id="carousel"
-            class="flex justify-between items-center w-full transition-transform duration-700"
-          >
-            <!-- Carousel Items -->
-            <div class="carousel-item relative w-full flex-shrink-0">
-              <img
-                src="assets\images\snacks.jpg"
-                alt="Image 1"
-                class="h-64 w-full object-cover"
-              />
-              <div
-                class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-              >
-                <p class="text-white text-xl font-semibold">
-                  Snacks
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item relative w-full flex-shrink-0">
-              <img
-                src="assets\images\catering1.jpg"
-                alt="Image 2"
-                class="h-64 w-full object-cover"
-              />
-              <div
-                class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-              >
-                <p class="text-white text-xl font-semibold">
-                  Catering Services
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item relative w-full flex-shrink-0">
-              <img
-                src="assets\images\surprise1.jpg"
-                alt="Image 3"
-                class="h-64 w-full object-cover"
-              />
-              <div
-                class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-              >
-                <p class="text-white text-xl font-semibold">
-                  Surprises & Food trays
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item relative w-full flex-shrink-0">
-              <img
-                src="assets\images\event1.jpg"
-                alt="Image 4"
-                class="h-64 w-full object-cover"
-              />
-              <div
-                class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-              >
-                <p class="text-white text-xl font-semibold">
-                  Event Management
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item relative w-full flex-shrink-0">
-              <img
-                src="assets\images\soupbowl1.jpg"
-                alt="Image 5"
-                class="h-64 w-full object-cover"
-              />
-              <div
-                class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-              >
-                <p class="text-white text-xl font-semibold">
-                  Soup Bowls
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item relative w-full flex-shrink-0">
-              <img
-                src="assets\images\c&t1.jpg"
-                alt="Image 5"
-                class="h-64 w-full object-cover"
-              />
-              <div
-                class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-              >
-                <p class="text-white text-xl font-semibold">
-                  Consulting & Training
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item relative w-full flex-shrink-0">
-              <img
-                src="assets\images\mealplan1.jpg"
-                alt="Image 5"
-                class="h-64 w-full object-cover"
-              />
-              <div
-                class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-              >
-                <p class="text-white text-xl font-semibold">
-                  Meal Plans
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item relative w-full flex-shrink-0">
-              <img
-                src="assets\images\naturalspices1.jpg"
-                alt="Image 5"
-                class="h-64 w-full object-cover"
-              />
-              <div
-                class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-              >
-                <p class="text-white text-xl font-semibold">
-                  Natural Spices Supply
-                </p>
-              </div>
-            </div>
-          </div>
+        <!-- Carousel Wrapper -->
+<div
+id="carousel"
+class="animate animate-from-bottom flex justify-between items-center w-full transition-transform duration-700"
+>
+<!-- Carousel Items -->
+<div class="carousel-item relative w-full flex-shrink-0">
+  <img
+    src="assets/images/snacks.jpg"
+    alt="Image 1"
+    class="h-64 w-full object-cover"
+  />
+  <div
+    class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+  >
+    <p class="text-white text-xl font-semibold">Snacks</p>
+  </div>
+</div>
+<div class="carousel-item relative w-full flex-shrink-0">
+  <img
+    src="assets/images/catering1.jpg"
+    alt="Image 2"
+    class="h-64 w-full object-cover"
+  />
+  <div
+    class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+  >
+    <p class="text-white text-xl font-semibold">Catering Services</p>
+  </div>
+</div>
+<div class="carousel-item relative w-full flex-shrink-0">
+  <img
+    src="assets/images/surprise1.jpg"
+    alt="Image 3"
+    class="h-64 w-full object-cover"
+  />
+  <div
+    class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+  >
+    <p class="text-white text-xl font-semibold">Surprises & Food trays</p>
+  </div>
+</div>
+<div class="carousel-item relative w-full flex-shrink-0">
+  <img
+    src="assets/images/event1.jpg"
+    alt="Image 4"
+    class="h-64 w-full object-cover"
+  />
+  <div
+    class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+  >
+    <p class="text-white text-xl font-semibold">Event Management</p>
+  </div>
+</div>
+<div class="carousel-item relative w-full flex-shrink-0">
+  <img
+    src="assets/images/soupbowl1.jpg"
+    alt="Image 5"
+    class="h-64 w-full object-cover"
+  />
+  <div
+    class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+  >
+    <p class="text-white text-xl font-semibold">Soup Bowls</p>
+  </div>
+</div>
+<div class="carousel-item relative w-full flex-shrink-0">
+  <img
+    src="assets/images/c&t1.jpg"
+    alt="Image 5"
+    class="h-64 w-full object-cover"
+  />
+  <div
+    class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+  >
+    <p class="text-white text-xl font-semibold">Consulting & Training</p>
+  </div>
+</div>
+<div class="carousel-item relative w-full flex-shrink-0">
+  <img
+    src="assets/images/mealplan1.jpg"
+    alt="Image 5"
+    class="h-64 w-full object-cover"
+  />
+  <div
+    class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+  >
+    <p class="text-white text-xl font-semibold">Meal Plans</p>
+  </div>
+</div>
+<div class="carousel-item relative w-full flex-shrink-0">
+  <img
+    src="assets/images/naturalspices1.jpg"
+    alt="Image 5"
+    class="h-64 w-full object-cover"
+  />
+  <div
+    class="overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+  >
+    <p class="text-white text-xl font-semibold">Natural Spices Supply</p>
+  </div>
+</div>
+</div>
+
 
           <!-- Navigation Dots -->
           <div
@@ -321,7 +308,7 @@
       <!-- AMENITIES SECTION -->
       <section
         id="services"
-        class="w-full flex flex-col justify-center items-center py-10 md:py-20 md:px-20 px-5 relative overflow-hidden"
+        class="animate animate-from-left w-full flex flex-col justify-center items-center py-10 md:py-20 md:px-20 px-5 relative overflow-hidden"
       >
         <img
           src="assets\images\foodbg1.jpg"
@@ -368,7 +355,7 @@
         <div
           class="overlay absolute inset-0 h-full bg-deolaBg flex items-center justify-center"
         ></div>
-        <div class="flex flex-col justify-center items-center relative">
+        <div class="animate animate-from-left flex flex-col justify-center items-center relative">
           <h2
             class="text-2xl font-semibold mb-[1rem] relative border-b-[2px] border-deolaBlack"
           >
@@ -380,12 +367,12 @@
             natural foods, agriculture, food processing, food production, food
             manufacturing, manufacturing beverages and general contracts..
           </p>
-          <a href="/about.html" class="underline cursor-pointer flex mb-10"
+          <a href="/aboutus" class="underline cursor-pointer flex mb-10"
             >Read more
           </a>
         </div>
         <div
-          class="flex justify-center items-center h-[25rem] w-full max-w-[400px] relative overflow-hidden rounded-md shadow-[inset_0_0_20px_rgba(0,0,0,0.9)]"
+          class="animate animate-from-right flex justify-center items-center h-[25rem] w-full max-w-[400px] relative overflow-hidden rounded-md shadow-[inset_0_0_20px_rgba(0,0,0,0.9)]"
         >
           <div
             class="absolute inset-0 w-full h-full bg-deolaBg flex items-center justify-center bg-image2"
@@ -409,7 +396,7 @@
         >
           <!-- card -->
           <div
-          class="w-full md:w-[18rem] h-[15rem] relative rounded-md overflow-hidden"
+          class="animate animate-from-left w-full md:w-[18rem] h-[15rem] relative rounded-md overflow-hidden"
         >
           <div class="w-full h-full rounded-md overflow-hidden">
             <img
@@ -427,7 +414,7 @@
         </div>
         <!-- card -->
           <div
-            class="w-full md:w-[18rem] h-[15rem] relative rounded-md overflow-hidden"
+            class="animate animate-from-right w-full md:w-[18rem] h-[15rem] relative rounded-md overflow-hidden"
           >
             <div class="w-full h-full rounded-md overflow-hidden">
               <img
@@ -445,7 +432,7 @@
           </div>
           <!-- card -->
           <div
-            class="w-full md:w-[18rem] h-[15rem] relative rounded-md overflow-hidden"
+            class="animate animate-from-left w-full md:w-[18rem] h-[15rem] relative rounded-md overflow-hidden"
           >
             <div class="w-full h-full rounded-md overflow-hidden">
               <img
@@ -463,7 +450,7 @@
           </div>
           <!-- card -->
           <div
-            class="w-full md:w-[18rem] h-[15rem] relative rounded-md overflow-hidden"
+            class="animate animate-from-right w-full md:w-[18rem] h-[15rem] relative rounded-md overflow-hidden"
           >
             <div class="w-full h-full rounded-md overflow-hidden">
               <img
@@ -481,7 +468,7 @@
           </div>
           <!-- card -->
           <div
-          class="w-full md:w-[18rem] h-[15rem] relative rounded-md overflow-hidden"
+          class="animate animate-from-left w-full md:w-[18rem] h-[15rem] relative rounded-md overflow-hidden"
         >
           <div class="w-full h-full rounded-md overflow-hidden">
             <img
@@ -499,7 +486,7 @@
         </div>
         <!-- card -->
           <div
-            class="w-full md:w-[18rem] h-[15rem] relative rounded-md overflow-hidden"
+            class="animate animate-from-right w-full md:w-[18rem] h-[15rem] relative rounded-md overflow-hidden"
           >
             <div class="w-full h-full rounded-md overflow-hidden">
               <img
@@ -609,13 +596,13 @@
 
   <div class="w-full flex flex-col md:flex-row max-w-[60rem]">
     <!-- Image Div -->
-    <div class="md:block w-full h-[20rem] md:h-[40rem] max-w-[30rem] relative overflow-hidden">
+    <div class="animate animate-from-top md:block w-full h-[20rem] md:h-[40rem] max-w-[30rem] relative overflow-hidden">
       <div class="absolute inset-0 bg-white opacity-30 z-10 rounded-lg"></div>
       <img src="assets/images/feedback.jpg" alt="Feedback Background" class="w-full h-auto object-cover">
     </div>
 
     <!-- Feedback Form -->
-    <form action="#" method="POST" class="space-y-4 form-section w-full max-w-[30rem] p-[0.5rem] md:p-[2rem]">
+    <form action="#" method="POST" class="animate animate-from-bottom space-y-4 form-section w-full max-w-[30rem] p-[0.5rem] md:p-[2rem]">
       <!-- Full Name -->
       <div>
         <label for="fullname" class="block text-sm font-medium text-gray-700">
@@ -749,7 +736,7 @@
         <li class="flex-1 flex justify-start items-center gap-2">
           <div class="w-[30px] h-[30px]">
             <img
-              src="assets\icons\location.png"
+              src="assets/icons/location.png"
               alt="location.png"
               class="w-full h-auto object-cover"
             />
@@ -763,7 +750,7 @@
         </li>
         <li class="flex-1 flex justify-start items-center gap-2">
           <div class="w-[30px] h-[30px]">
-            <img src="assets\icons\whatsapp.png" alt="location.png" />
+            <img src="assets\/icons/whatsapp.png" alt="location.png" />
           </div>
           <div>
             <p>Call/Whattsap</p>
@@ -772,7 +759,7 @@
         </li>
         <li class="flex-1 flex justify-start items-center gap-2">
           <div class="w-[30px] h-[30px]">
-            <img src="assets\icons\mail.png" alt="location.png" />
+            <img src="assets/icons/mail.png" alt="location.png" />
           </div>
           <div>
             <p>Mail</p>
@@ -791,7 +778,7 @@
         <div class="flex-1 flex flex-col gap-2">
           <div class="w-[50px] h-[50px] object-contain">
             <img
-              src="assets\images\deolaLogo.png"
+              src="assets/images/deolaLogo.png"
               alt=""
               class="w-full h-auto"
             />
@@ -807,17 +794,17 @@
               <a
                 target="_blank"
                 href="https://www.facebook.com/profile.php?id=100063540555025&mibextid=ZbWKwL"
-                ><img src="assets\images\facebook.png" alt="fb.png"
+                ><img src="assets/images/facebook.png" alt="fb.png"
               /></a>
             </li>
             <li>
               <a target="_blank" href="https://www.instagram.com/deolaresources/profilecard/?igsh=MWk2cm8xMXptbXlncQ=="
-                ><img src="assets\images\instagram.png" alt="insta.png"
+                ><img src="assets/images/instagram.png" alt="insta.png"
               /></a>
             </li>
             <li>
               <a href=""
-                ><img src="assets\images\tiktok.png" alt="iktok.png"
+                ><img src="assets/images/tiktok.png" alt="iktok.png"
               /></a>
             </li>
           </ul>
@@ -845,13 +832,13 @@
           >
             <input
               type="text"
-              class="w-full h-full text-black text-[12px] p-2 border-none outline-none"
+              class="email-input w-full h-full text-black text-[12px] p-2 border-none outline-none"
               placeholder="Enter email address"
             />
             <button
-              class="w-[4rem] h-full absolute right-0 bottom-0 bg-deolaYellow rounded-md flex items-center justify-center"
+              class="email-submit w-[4rem] h-full absolute right-0 bottom-0 bg-deolaYellow rounded-md flex items-center justify-center"
             >
-              <img src="assets\icons\send.png" alt="" />
+              <img src="assets/icons/send.png" alt="" />
             </button>
           </div>
         </div>
@@ -860,6 +847,6 @@
         Copyright &copy; deolaresources 2024. All Right Reserved
       </p>
     </footer>
-    <script type="module" src="assets\js\scripts.js"></script>
+    <script type="module" src="assets/js/scripts.js"></script>
   </body>
 </html>

@@ -832,6 +832,10 @@ video {
   height: 100vh;
 }
 
+.min-h-screen{
+  min-height: 100vh;
+}
+
 .w-2{
   width: 0.5rem;
 }
@@ -854,10 +858,6 @@ video {
 
 .w-\[30rem\]{
   width: 30rem;
-}
-
-.w-\[40rem\]{
-  width: 40rem;
 }
 
 .w-\[4rem\]{
@@ -1175,11 +1175,6 @@ video {
   padding: 0.5rem;
 }
 
-.px-0{
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
 .px-4{
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1415,6 +1410,11 @@ video {
 .hover\:border-deolaDarkGreen2:hover{
   --tw-border-opacity: 1;
   border-color: rgb(15 58 57 / var(--tw-border-opacity, 1));
+}
+
+.hover\:border-white:hover{
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
 }
 
 .hover\:bg-deolaDarkGreen2:hover{
