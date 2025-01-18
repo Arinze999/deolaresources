@@ -176,6 +176,7 @@ body {
   /* 1 */
   line-height: inherit;
   /* 2 */
+  overflow-x: hidden;
 }
 
 /*
@@ -1405,11 +1406,6 @@ video {
 .hover\:border-deolaDarkGreen:hover{
   --tw-border-opacity: 1;
   border-color: rgb(32 113 118 / var(--tw-border-opacity, 1));
-}
-
-.hover\:border-deolaDarkGreen2:hover{
-  --tw-border-opacity: 1;
-  border-color: rgb(15 58 57 / var(--tw-border-opacity, 1));
 }
 
 .hover\:border-white:hover{
