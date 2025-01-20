@@ -431,24 +431,44 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 // ----------------------------------------
-// Auto Logout After 1 Hour
+// Auto Logout After 1 Hour or Inactivity
 // ----------------------------------------
-function startAutoLogoutTimer() {
-  // Set a timeout to log the admin out after 1 hour (3600000 milliseconds)
-  const logoutTimeout = 60 * 60 * 1000; // 1 hour in milliseconds
 
-  setTimeout(() => {
-    // Sign out the admin
+function startAutoLogoutTimer() {
+  // Set the logout timeout (1 hour in milliseconds)
+  const logoutTimeout = 60 * 60 * 1000; // 1 hour
+  const inactivityLimit = 1 * 60 * 1000; // 5 minutes in milliseconds
+
+  // Save the current time in localStorage when the page is loaded
+  localStorage.setItem("lastActivityTime", Date.now());
+
+  // Function to check inactivity and log out
+  const checkInactivity = () => {
+    const lastActivityTime = localStorage.getItem("lastActivityTime");
+    if (!lastActivityTime) return; // If there's no timestamp, skip the check
+
+    const currentTime = Date.now();
+    const elapsedTime = currentTime - lastActivityTime;
+
+    // If inactivity exceeds the limit, log out the user
+    if (elapsedTime > inactivityLimit) {
+      logoutUser("You have been logged out due to inactivity.");
+    }
+  };
+
+  // Function to log out the user
+  const logoutUser = (message) => {
     signOut(auth)
       .then(() => {
-        localStorage.removeItem("deolaToken"); // Clear the token
+        localStorage.removeItem("deolaToken"); // Clear token
+        localStorage.removeItem("lastActivityTime"); // Clear activity time
         Swal.fire({
           title: "Session Expired",
-          text: "You have been logged out due to inactivity.",
+          text: message,
           icon: "info",
           confirmButtonText: "OK",
         });
-        setTimeout(() => window.location.reload(), 2000); // Reload page after logout
+        setTimeout(() => window.location.reload(), 2000); // Reload page
       })
       .catch((error) => {
         console.error("Error logging out:", error);
@@ -459,14 +479,43 @@ function startAutoLogoutTimer() {
           confirmButtonText: "OK",
         });
       });
+  };
+
+  // Periodically check for inactivity
+  const inactivityCheckInterval = setInterval(checkInactivity, 1000);
+
+  // Update last activity time on user interaction
+  const resetInactivityTimer = () => {
+    localStorage.setItem("lastActivityTime", Date.now());
+  };
+
+  window.addEventListener("mousemove", resetInactivityTimer);
+  window.addEventListener("keydown", resetInactivityTimer);
+
+  // Clear interval and event listeners on logout
+  const clearResources = () => {
+    clearInterval(inactivityCheckInterval);
+    window.removeEventListener("mousemove", resetInactivityTimer);
+    window.removeEventListener("keydown", resetInactivityTimer);
+  };
+
+  // Logout after 1 hour regardless of activity
+  setTimeout(() => {
+    clearResources();
+    logoutUser("Your session has expired after 1 hour.");
   }, logoutTimeout);
+
+  // Clean up resources on page unload
+  window.addEventListener("beforeunload", () => {
+    clearResources();
+    localStorage.removeItem("lastActivityTime");
+  });
 }
 
 // ----------------------------------------
 // Initialize Auto Logout for Admin
 // ----------------------------------------
 if (admin) {
-  // Start the auto logout timer if the admin is logged in
   startAutoLogoutTimer();
 }
 
