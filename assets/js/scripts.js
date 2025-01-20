@@ -437,7 +437,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 function startAutoLogoutTimer() {
   // Set the logout timeout (1 hour in milliseconds)
   const logoutTimeout = 60 * 60 * 1000; // 1 hour
-  const inactivityLimit = 1 * 60 * 1000; // 5 minutes in milliseconds
+  const inactivityLimit = 5 * 60 * 1000; // 5 minutes in milliseconds
 
   // Save the current time in localStorage when the page is loaded
   localStorage.setItem("lastActivityTime", Date.now());

@@ -2,7 +2,10 @@
 // Import Firebase and Dependencies
 // ----------------------------------------
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import Swal from "https://cdn.skypack.dev/sweetalert2@11";
 
 // ----------------------------------------
@@ -36,7 +39,11 @@ async function signInAdmin(email, password, button) {
     button.disabled = true;
     button.textContent = "Loading...";
 
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
     const user = userCredential.user;
 
     // Show success alert
@@ -80,10 +87,21 @@ const emailField = document.getElementById("email");
 const passwordField = document.getElementById("password");
 const signInButton = document.getElementById("admin-signin-button");
 
+const admin = localStorage.getItem("deolaToken");
+
 // Add event listener to sign-in button
 if (signInButton) {
   signInButton.addEventListener("click", (event) => {
     event.preventDefault();
+    if (admin) {
+      Swal.fire({
+        title: "Error!",
+        text: "You're already signed In",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
     const email = emailField.value.trim();
     const password = passwordField.value;
 

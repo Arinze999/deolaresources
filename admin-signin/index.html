@@ -3,9 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Prevent Indexing by Search Engines -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Security and Compatibility -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
+    <!-- <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';"
+    /> -->
+    <!-- <meta http-equiv="referrer" content="no-referrer" /> -->
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../favicon2.png" />
+
+    <!-- Title -->
+    <title>Admin Sign-In - Deola Resources</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/output.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
-    <title>Document</title>
   </head>
   <body class="font-poppings">
     <div class="w-[50px] h-[50px] object-contain fixed top-0 left-0 m-4">
@@ -25,6 +43,7 @@
               id="email"
               class="w-full border-2 border-gray-300 p-3 rounded mt-1"
               placeholder="Enter your email"
+              required
             />
           </div>
           <div class="mt-6">
@@ -35,6 +54,7 @@
               id="password"
               class="w-full border-2 border-gray-300 p-3 rounded mt-1"
               placeholder="Enter your password"
+              required
             />
           </div>
           <div class="mt-6">

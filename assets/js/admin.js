@@ -10,6 +10,7 @@ import {
   updateDoc,
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+import Swal from "https://cdn.skypack.dev/sweetalert2@11";
 
 // Initialize Firebase (renaming the app instance to avoid conflicts)
 const firebaseConfig = {
@@ -23,6 +24,22 @@ const firebaseConfig = {
 
 const appAdmin = initializeApp(firebaseConfig, "adminApp");
 const db = getFirestore(appAdmin);
+
+// ----------------------------------------
+// Check for Admin Authentication
+// ----------------------------------------
+const admin = localStorage.getItem("deolaToken");
+
+if (!admin || !appAdmin) {
+  Swal.fire({
+    title: "Unauthorized",
+    text: "You need to sign in as an admin to access this page.",
+    icon: "error",
+    confirmButtonText: "OK",
+  }).then(() => {
+    window.location.href = "../"; // Redirect to the home page
+  });
+}
 
 // ----------------------------------------
 // DOM Elements
@@ -49,6 +66,7 @@ feedbackContainer.parentNode.insertBefore(tabsContainer, feedbackContainer);
 // Render Feedbacks
 // ----------------------------------------
 const renderFeedbacks = () => {
+  if (!admin || !appAdmin) return;
   const feedbacksRef = collection(db, "feedbacks");
 
   // Real-time listener to reflect changes
@@ -105,6 +123,7 @@ const renderFeedbacks = () => {
 // Render Email List
 // ----------------------------------------
 const renderEmailList = () => {
+  if (!admin || !appAdmin) return;
   const emailListRef = collection(db, "emailList");
 
   // Fetch all emails
