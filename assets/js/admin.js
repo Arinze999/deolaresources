@@ -1,9 +1,7 @@
 // ----------------------------------------
 // Import Firebase Firestore
 // ----------------------------------------
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import {
-  getFirestore,
   collection,
   getDocs,
   doc,
@@ -11,26 +9,14 @@ import {
   onSnapshot,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 import Swal from "https://cdn.skypack.dev/sweetalert2@11";
-
-// Initialize Firebase (renaming the app instance to avoid conflicts)
-const firebaseConfig = {
-  apiKey: "AIzaSyAWGP7BrK07_erEaXgSVU3ZhlwBp3Qy3Bc",
-  authDomain: "shadeproject-e6cdd.firebaseapp.com",
-  projectId: "shadeproject-e6cdd",
-  storageBucket: "shadeproject-e6cdd.firebasestorage.app",
-  messagingSenderId: "170836665346",
-  appId: "1:170836665346:web:7ec2c062f4c158f0a1f31b",
-};
-
-const appAdmin = initializeApp(firebaseConfig, "adminApp");
-const db = getFirestore(appAdmin);
+import { app, db } from "./configs.js";
 
 // ----------------------------------------
 // Check for Admin Authentication
 // ----------------------------------------
 const admin = localStorage.getItem("deolaToken");
 
-if (!admin || !appAdmin) {
+if (!admin || !app) {
   Swal.fire({
     title: "Unauthorized",
     text: "You need to sign in as an admin to access this page.",
@@ -66,7 +52,7 @@ feedbackContainer.parentNode.insertBefore(tabsContainer, feedbackContainer);
 // Render Feedbacks
 // ----------------------------------------
 const renderFeedbacks = () => {
-  if (!admin || !appAdmin) return;
+  if (!admin || !app) return;
   const feedbacksRef = collection(db, "feedbacks");
 
   // Real-time listener to reflect changes
@@ -123,7 +109,7 @@ const renderFeedbacks = () => {
 // Render Email List
 // ----------------------------------------
 const renderEmailList = () => {
-  if (!admin || !appAdmin) return;
+  if (!admin || !app) return;
   const emailListRef = collection(db, "emailList");
 
   // Fetch all emails

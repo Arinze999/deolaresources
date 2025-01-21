@@ -1,9 +1,7 @@
 // ----------------------------------------
 // Import Firebase and Dependencies
 // ----------------------------------------
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import {
-  getFirestore,
   collection,
   addDoc,
   getDocs,
@@ -11,39 +9,13 @@ import {
   doc,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 import {
-  getStorage,
   ref,
   uploadBytes,
   getDownloadURL,
   deleteObject,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-storage.js";
 import Swal from "https://cdn.skypack.dev/sweetalert2@11";
-
-// ----------------------------------------
-// Firebase Configurations
-// ----------------------------------------
-const helperStorageConfig = {
-  apiKey: "AIzaSyCwPsG2yyWCaBlKBA_97WBtxlY_x-wkNMg",
-  authDomain: "coinkeep-a5f93.firebaseapp.com",
-  projectId: "coinkeep-a5f93",
-  storageBucket: "coinkeep-a5f93.appspot.com",
-  messagingSenderId: "905184825938",
-  appId: "1:905184825938:web:9c644227cd868ad1bf858b",
-};
-const config = {
-  apiKey: "AIzaSyAWGP7BrK07_erEaXgSVU3ZhlwBp3Qy3Bc",
-  authDomain: "shadeproject-e6cdd.firebaseapp.com",
-  projectId: "shadeproject-e6cdd",
-  storageBucket: "shadeproject-e6cdd.firebasestorage.app",
-  messagingSenderId: "170836665346",
-  appId: "1:170836665346:web:7ec2c062f4c158f0a1f31b",
-};
-
-// Initialize Firebase Apps
-const helperStorageApp = initializeApp(helperStorageConfig);
-const helperStorage = getStorage(helperStorageApp);
-const blogApp = initializeApp(config, "blogApp");
-const blogDb = getFirestore(blogApp);
+import { db as blogDb, helperStorage } from "./configs.js";
 
 // ----------------------------------------
 // DOM Elements

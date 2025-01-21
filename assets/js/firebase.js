@@ -1,28 +1,9 @@
 // ----------------------------------------
 // Import Firebase and Dependencies
 // ----------------------------------------
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-} from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import Swal from "https://cdn.skypack.dev/sweetalert2@11";
-
-// ----------------------------------------
-// Firebase Configuration and Initialization
-// ----------------------------------------
-const firebaseConfig = {
-  apiKey: "AIzaSyAWGP7BrK07_erEaXgSVU3ZhlwBp3Qy3Bc",
-  authDomain: "shadeproject-e6cdd.firebaseapp.com",
-  projectId: "shadeproject-e6cdd",
-  storageBucket: "shadeproject-e6cdd.firebasestorage.app",
-  messagingSenderId: "170836665346",
-  appId: "1:170836665346:web:7ec2c062f4c158f0a1f31b",
-};
-
-// Initialize Firebase App
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app); // Initialize Firebase Authentication
+import { auth } from "./configs.js";
 
 // ----------------------------------------
 // Sign-In Functionality
